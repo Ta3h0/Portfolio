@@ -1,0 +1,284 @@
+@charset "utf-8";
+
+/* 초기값css */
+@import url(reset.css);
+
+/* 헤더, 공통 css */
+@import url(common.css);
+
+/* 지마켓 산스 */
+@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
+.main_visual {
+    height: 100vh;
+    background-color: #ff7f50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.main_visual .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_visual .inner h4 {
+    font-size: 60px;
+    margin: 35px 0;
+}
+
+.main_visual .inner p {
+    margin: 14px 0;
+    font-size: 50px;
+    font-weight: 100;
+    text-wrap: nowrap;
+}
+
+.main_visual .inner h3 {
+    font-size: 80px;
+    margin: 30px 0;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.main_visual .line {
+    display: flex;
+    position: absolute;
+    top: 66%;
+    left: 0;
+    transform: translateY(-65%);
+    font-size: 150px;
+    opacity: 0.1;
+    font-weight: bold;
+    text-wrap: nowrap;
+    animation: slide 270s infinite normal linear;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    z-index: 0;
+}
+
+.main_visual .line span {
+    margin: 0 30px;
+    display: block;
+    font-weight: bold;
+}
+
+.info, .site, .design, .end {
+    width: 100%;
+    height: 100vh;
+    display: none;
+}
+
+.info {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    pointer-events: none;
+}
+
+.site {
+    width: 100%;
+    height: 100vh;
+    background-color: #ff7f50;
+}
+
+.swiper-slide {
+    padding-top: 90px;
+}
+
+.site h3 {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    margin: 0 0 100px;
+}
+
+.site .inner_bg {
+    width: 100%;
+    height: 550px;
+    background-color: white;
+    position: relative;
+}
+
+.site .inner_bg .inner {
+    max-width: 1440px;
+    width: calc(100% - 50px);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site .inner_bg .inner .left {
+    width: 853px;
+    height: 633px;
+}
+
+.site .inner_bg .inner .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.site .inner_bg .inner .right h4 {
+    font-size: 40px;
+    margin-bottom: 57px;
+}
+
+.site .inner_bg .inner .right p {
+    font-size: 25px;
+    margin: 16px 0;
+}
+
+.site .inner_bg .inner .right .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site .inner_bg .inner .right a {
+    font-size: 20px;
+    padding: 20px 30px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff6347;
+    margin: 20px 40px 0;
+}
+
+:root {
+    --swiper-theme-color: tomato;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    transform: scale(2);
+}
+
+.swiper-button-prev {
+    top: 50%;
+    left: 70px;
+}
+
+.swiper-button-next {
+    top: 50%;
+    right: 70px;
+}
+
+.design {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding-top: 60px;
+}
+
+.design h3 {
+    color: tomato;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.design p {
+    text-align: center;
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.design .inner {
+    max-width: 1440px;
+    width: 100%;
+    margin-top: 60px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.design .inner span {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.design .inner figure {
+    width: 280px;
+    height: 280px;
+    background-color: white;
+}
+
+.design .inner figure:nth-of-type(6),
+.design .inner figure:nth-of-type(8) {
+    width: 570px;
+    height: 280px;
+}
+
+.design .inner figure:nth-of-type(6),
+.design .inner figure:nth-of-type(7),
+.design .inner figure:nth-of-type(8) {
+    margin-top: 10px;
+}
+
+.end {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.end .bg {
+    height: 80vh;
+    width: 95%;
+    background: url(../img/end.png) center bottom / 100% no-repeat;
+}
+
+.end h3 {
+    color: #ff7f50;
+    font-size: 60px;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.end footer {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.end footer h5 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.end footer a {
+    width: 60px;
+    height: 60px;
+    display: block;
+}

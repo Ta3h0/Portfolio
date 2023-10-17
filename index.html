@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ta3h0_</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="lib/jquery-3.7.0.min.js"></script>
+
+    <script>
+
+        window.onload = () => {
+
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+
+        }; //JS end
+
+        $(function () {
+
+            //휠 페이징을 위한 카운트 변수
+            let c = 0;
+
+
+            //타이머 변수
+            let timer = true;
+
+            let mainPage = $('main > section');
+            let pagingCount = $('.menu > li');
+
+            wrap.addEventListener('wheel', function (event) {
+                let eventY = event.deltaY;
+
+                if (timer) {
+                    // 휠 1.3s동안 막기
+                    timer = false;
+                    setTimeout(function () {
+                        timer = true;
+                    }, 1300)
+
+                    //휠 풀페이징 애니메이션
+                    function slide() {
+
+                        mainPage.slideUp(800)
+                        mainPage.eq(c).slideDown(700)
+                        mainPage.eq(c).css({ 'display': 'flex' });
+                        pagingCount.removeClass('on')
+                        pagingCount.eq(c).addClass('on')
+
+                    }
+
+                    if (c <= 0) {
+                        if (eventY < 0) { // 0일때 휠 올리기
+                            c = 4;
+
+                            slide();
+
+                        } else if (eventY > 0) { // 0일때 휠 내리기
+                            c++;
+
+                            slide();
+
+                        }
+                    } else if (c >= 4) {
+                        if (eventY < 0) { // 4일때 휠 올리기
+                            c--;
+
+                            slide();
+
+                        } else if (eventY > 0) { // 4일때 휠 내리기
+                            c = 0;
+
+                            slide();
+
+                        }
+                    } else {
+                        if (eventY < 0) { //휠 올리기
+                            c--;
+
+
+                            slide();
+
+                        } else if (eventY > 0) { //휠 내리기
+                            c++;
+
+                            slide();
+
+                        }
+                    }
+
+                    //페이지 번호에 맞춰서 헤더 메뉴 li 색상 변경
+                    if (c == 0) {
+                        $('.menu li').css({
+                            'color': 'white'
+                        })
+                    } else if (c == 1) {
+                        $('.menu li').css({
+                            'color': '#333'
+                        })
+                    } else if (c == 2) {
+                        $('.menu li').css({
+                            'color': 'white'
+                        })
+                    } else if (c == 3) {
+                        $('.menu li').css({
+                            'color': '#333'
+                        })
+                    } else {
+                        $('.menu li').css({
+                            'color': '#333'
+                        })
+                    }
+
+                }
+            })// wrap.addEventlistener end
+
+            pagingCount.click(function () {
+
+                if (timer) {
+                    //  클릭 1.3s동안 막기
+                    timer = false;
+                    setTimeout(function () {
+                        timer = true;
+                    }, 1300)
+
+                    //클릭 풀페이징 애니메이션
+                    mainPage.stop().slideUp(800);
+                    mainPage.eq($(this).index()).stop().slideDown(700);
+                    mainPage.eq($(this).index()).css({ 'display': 'flex' })
+
+                    pagingCount.removeClass('on');
+                    pagingCount.eq($(this).index()).addClass('on');
+
+                    //휠 풀페이징과 카운트 연동하기
+                    c = $(this).index();
+
+                    console.log(c);
+
+                    //페이지 번호에 맞춰서 헤더 메뉴 li 색상 변경
+                    if (c == 0) {
+                        $('.menu li').css({
+                            'color': 'white'
+                        })
+                    } else if (c == 1) {
+                        $('.menu li').css({
+                            'color': '#333'
+                        })
+                    } else if (c == 2) {
+                        $('.menu li').css({
+                            'color': 'white'
+                        })
+                    } else if (c == 3) {
+                        $('.menu li').css({
+                            'color': '#333'
+                        })
+                    } else {
+                        $('.menu li').css({
+                            'color': '#333'
+                        })
+                    }
+
+                }
+            }); //pagingCount.click end
+
+        }); //jQuery end
+
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+
+        <header>
+            <ul class="menu">
+                <li class="on">메인</li>
+                <li>정보</li>
+                <li>리뉴얼 및 창작</li>
+                <li>디자인</li>
+                <li>마치며</li>
+            </ul>
+        </header>
+
+        <main>
+            <section class="main_visual">
+                <div class="inner">
+                    <figure>
+                        <img src="img/eye.png" alt="메인비주얼 눈 일러스트">
+                    </figure>
+                    <h4>#발전 #도전</h4>
+                    <p>안녕하세요!</p>
+                    <p><strong>꾸준히</strong> 성장하는 <strong>발전형</strong> 웹 퍼블리셔</p>
+                    <h3>김태호</h3>
+                    <p>입니다</p>
+
+                    <div class="line">
+                        <span>Hello World!</span>
+                        <span>Hello World!</span>
+                        <span>Hello World!</span>
+                        <span>Hello World!</span>
+                        <span>Hello World!</span>
+                        <span>Hello World!</span>
+                        <span>Hello World!</span>
+                    </div><!-- .line end -->
+                </div><!-- .inner end -->
+            </section><!-- .main_visual end -->
+
+            <section class="info">
+                <img src="img/introduce.png" alt="소개페이지">
+            </section><!-- .info end -->
+
+            <section class="site">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <h3>RENEWAL PROJECT</h3>
+                            <div class="inner_bg">
+                                <div class="inner">
+                                    <figure class="left">
+                                        <img src="img/project1.png" alt="리뉴얼 프로젝트 1번 유쏘풀">
+                                    </figure><!-- .left end -->
+                                    <div class="right">
+                                        <h4>사이트 명 : 유쏘풀</h4>
+
+                                        <p>작업 기간 : 7일</p>
+                                        <p>작업 내용 : 리뉴얼(디자인, 컨텐츠)</p>
+                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
+                                        <p>사용 툴 : VSCode, PhotoShop</p>
+
+                                        <div class="btn">
+                                            <a href="#">프로세스 페이지</a>
+                                            <a href="#">완성작 보기</a>
+                                        </div><!-- .btn end -->
+                                    </div><!-- .right end -->
+                                </div><!-- .inner end -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div><!-- .inner_bg end -->
+                        </div><!-- .swiper-slide end -->
+
+
+                        <div class="swiper-slide">
+                            <h3>RENEWAL PROJECT</h3>
+                            <div class="inner_bg">
+                                <div class="inner">
+                                    <figure class="left">
+                                        <img src="img/project2.png" alt="리뉴얼 프로젝트 2번 멜론">
+                                    </figure><!-- .left end -->
+                                    <div class="right">
+                                        <h4>사이트 명 : 멜론</h4>
+
+                                        <p>작업 기간 : 15일</p>
+                                        <p>작업 내용 : 리뉴얼(디자인, 컨텐츠)</p>
+                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
+                                        <p>사용 툴 : VSCode, PhotoShop</p>
+
+                                        <div class="btn">
+                                            <a href="#">프로세스 페이지</a>
+                                            <a href="#">완성작 보기</a>
+                                        </div><!-- .btn end -->
+                                    </div><!-- .right end -->
+                                </div><!-- .inner end -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div><!-- .inner_bg end -->
+                        </div><!-- .swiper-slide end -->
+
+
+                        <div class="swiper-slide">
+                            <h3>RENEWAL PROJECT</h3>
+                            <div class="inner_bg">
+                                <div class="inner">
+                                    <figure class="left">
+                                        <img src="img/project3.png" alt="리뉴얼 프로젝트 3번 먼스커피바">
+                                    </figure><!-- .left end -->
+                                    <div class="right">
+                                        <h4>사이트 명 : 먼스커피바</h4>
+
+                                        <p>작업 기간 : 13일</p>
+                                        <p>작업 내용 : 리뉴얼(디자인, 컨텐츠)</p>
+                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
+                                        <p>사용 툴 : VSCode, PhotoShop</p>
+
+                                        <div class="btn">
+                                            <a href="#">프로세스 페이지</a>
+                                            <a href="#">완성작 보기</a>
+                                        </div><!-- .btn end -->
+                                    </div><!-- .right end -->
+                                </div><!-- .inner end -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div><!-- .inner_bg end -->
+                        </div><!-- .swiper-slide end -->
+
+
+                        <div class="swiper-slide">
+                            <h3>CREATE PROJECT</h3>
+                            <div class="inner_bg">
+                                <div class="inner">
+                                    <figure class="left">
+                                        <img src="img/project2.png" alt="창작 프로젝트 4번 하이버">
+                                    </figure><!-- .left end -->
+                                    <div class="right">
+                                        <h4>사이트 명 : 하이버</h4>
+
+                                        <p>작업 기간 : 10일</p>
+                                        <p>작업 내용 : 리뉴얼(디자인, 컨텐츠)</p>
+                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
+                                        <p>사용 툴 : VSCode, PhotoShop</p>
+
+                                        <div class="btn">
+                                            <a href="#">프로세스 페이지</a>
+                                            <a href="#">완성작 보기</a>
+                                        </div><!-- .btn end -->
+                                    </div><!-- .right end -->
+                                </div><!-- .inner end -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div><!-- .inner_bg end -->
+                        </div><!-- .swiper-slide end -->
+
+                    </div>
+
+                </div><!-- .swiper end -->
+            </section><!-- .site end -->
+
+            <section class="design">
+                <h3>DESIGN PROJECT</h3>
+                <p>프로젝트를 진행할때</p>
+                <p>여러가지 배너를 직접 제작하여</p>
+                <p>작업물의 퀄리티와 실용성을</p>
+                <p>더 높히기 위해 노력했습니다</p>
+
+                <div class="inner">
+                    <span>마우스를 올리면 원본 비율의 이미지를 확인할 수 있습니다 :)</span>
+
+                    <figure>
+                        <img src="img/비오베.png" alt="디자인 작업물1">
+                    </figure>
+
+                    <figure>
+                        <img src="img/웨딩카드.png" alt="디자인 작업물2">
+                    </figure>
+
+
+                    <figure>
+                        <img src="img/쥬뗌므.png" alt="디자인 작업물3">
+                    </figure>
+
+                    <figure>
+                        <img src="img/일본여행.png" alt="디자인 작업물4">
+                    </figure>
+
+                    <figure>
+                        <img src="img/.png" alt="디자인 작업물5">
+                    </figure>
+
+                    <figure>
+                        <img src="img/멜론.png" alt="디자인 작업물6">
+                    </figure>
+
+                    <figure>
+                        <img src="img/여름특가.png" alt="디자인 작업물7">
+                    </figure>
+
+                    <figure>
+                        <img src="img/아임미미.png" alt="디자인 작업물8">
+                    </figure>
+
+                </div><!-- .inner end -->
+
+            </section><!-- .design end -->
+
+            <section class="end">
+                <h3>IN CONCLUSION</h3>
+
+                <div class="bg"></div>
+
+                <footer>
+                    <h5>github</h5>
+                    <a href="https://github.com/Ta3h0"><img src="img/github-mark.png" alt="깃허브"></a>
+                </footer>
+            </section><!-- .end end -->
+
+        </main>
+
+
+    </div><!-- #wrap end -->
+</body>
+
+</html>
