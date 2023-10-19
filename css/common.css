@@ -10,7 +10,20 @@
 
 body {
     height: 100vh;
-    overflow-y: hidden;
+}
+
+body.on::-webkit-scrollbar {
+    display: none;
+}
+
+body.on {
+    overflow: hidden;
+}
+
+main section {
+    height: 100vh;
+    margin: 0 auto;
+
 }
 
 header {

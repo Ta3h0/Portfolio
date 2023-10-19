@@ -58,11 +58,15 @@
                     //휠 풀페이징 애니메이션
                     function slide() {
 
+                        $('body').addClass('on')
                         mainPage.slideUp(800)
                         mainPage.eq(c).slideDown(700)
                         mainPage.eq(c).css({ 'display': 'flex' });
                         pagingCount.removeClass('on')
                         pagingCount.eq(c).addClass('on')
+                        setTimeout(function () {
+                            $('body').removeClass('on');
+                        }, 800)
 
                     }
 
@@ -141,12 +145,16 @@
                     }, 1300)
 
                     //클릭 풀페이징 애니메이션
+                    $('body').addClass('on');
                     mainPage.stop().slideUp(800);
                     mainPage.eq($(this).index()).stop().slideDown(700);
                     mainPage.eq($(this).index()).css({ 'display': 'flex' })
 
                     pagingCount.removeClass('on');
                     pagingCount.eq($(this).index()).addClass('on');
+                    setTimeout(function () {
+                            $('body').removeClass('on');
+                        }, 800)
 
                     //휠 풀페이징과 카운트 연동하기
                     c = $(this).index();
@@ -179,6 +187,23 @@
                 }
             }); //pagingCount.click end
 
+            //디자인탭에 figure 클릭하면 이미지 중앙으로 오게
+            $('.design figure img').click(function () {
+
+                $('.design figure').removeClass('on')
+                $(this).parent().addClass('on')
+
+            }); //$('.design figure').click end
+
+            //figure에 span 클릭하면 사진 들어가게
+            $('.design figure span').click(function () {
+
+
+                $(this).parent().removeClass('on')
+
+
+            }); //$('.design figure span').click end
+
         }); //jQuery end
 
     </script>
@@ -204,6 +229,7 @@
                         <img src="img/eye.png" alt="메인비주얼 눈 일러스트">
                     </figure>
                     <h4>#발전 #도전</h4>
+                    
                     <p>안녕하세요!</p>
                     <p><strong>꾸준히</strong> 성장하는 <strong>발전형</strong> 웹 퍼블리셔</p>
                     <h3>김태호</h3>
@@ -222,7 +248,79 @@
             </section><!-- .main_visual end -->
 
             <section class="info">
-                <img src="img/introduce.png" alt="소개페이지">
+                <div class="inner">
+                <div class="left">
+                    <figure>
+                        <img src="img/Charactor.png" alt="캐릭터 일러스트">
+                    </figure>
+
+                    <div class="left_bottom">
+                        <h3>Motto</h3>
+                        <p>웹 퍼블리싱이란<br>
+                            꾸준함과 새로운 영감이<br>
+                            필수라고 생각합니다<br>
+                            저는 꾸준함과 영감이 무기인<br>
+                            <strong>웹 퍼블리셔</strong>입니다
+                        </p>
+                    </div>
+                </div><!-- .left end -->
+
+                <div class="right">
+                    <div class="right_top">
+                        <div>
+                            <h3 class="title">About Me</h3>
+
+                            <h4>Name</h4>
+                            <p>김태호</p>
+
+                            <h4>Born</h4>
+                            <p>1997.06.12</p>
+
+                            <h4>Phone</h4>
+                            <p>010-4003-8074</p>
+
+                            <h4>E-mail</h4>
+                            <p>Ta3h0_@naver.com</p>
+
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/Ta3h0_">https://github.com/Ta3h0_</a>
+                        </div>
+
+                        <div>
+                            <h3 class="title">기술</h3>
+
+                            <h4>For Code</h4>
+                            <div>
+                                <img src="img/html.png" alt="html">
+                                <img src="img/css.png" alt="css">
+                                <img src="img/js.png" alt="java script">
+                                <img src="img/react.png" alt="react">
+                            </div>
+
+                            <h4>For Design</h4>
+                            <div>
+                                <img src="img/Ps.png" alt="photopshop">
+                                <img src="img/figma.png" alt="figma">
+                                <img src="img/ai.png" alt="ai">
+                            </div>
+                        </div>
+
+                    </div><!-- .right_top end -->
+
+                    <div class="right_bottom">
+                        <div>
+                            <h3 class="title">학력</h3>
+                            <p>2014.03 ~ 2016.02 부산 동성고등학교 졸업</p>
+                            <p>2016.03 ~ 2018.02 부산 예술대학교 졸업<br>
+                                (실용음악학과 보컬전공)
+                            </p>
+                            <p>2023.06 ~ 2023.11 웹 퍼블리셔 과정 수료<br>
+                                (그린 컴퓨터 아카데미)
+                            </p>
+                        </div>
+                    </div><!-- .right_bottom end -->
+                </div><!-- .right end -->
+            </div><!-- .inner end -->
             </section><!-- .info end -->
 
             <section class="site">
@@ -250,8 +348,7 @@
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
+
                             </div><!-- .inner_bg end -->
                         </div><!-- .swiper-slide end -->
 
@@ -277,8 +374,7 @@
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
+
                             </div><!-- .inner_bg end -->
                         </div><!-- .swiper-slide end -->
 
@@ -304,8 +400,7 @@
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
+
                             </div><!-- .inner_bg end -->
                         </div><!-- .swiper-slide end -->
 
@@ -331,57 +426,65 @@
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
                             </div><!-- .inner_bg end -->
+
                         </div><!-- .swiper-slide end -->
 
                     </div>
-
                 </div><!-- .swiper end -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </section><!-- .site end -->
 
             <section class="design">
                 <h3>DESIGN PROJECT</h3>
                 <p>프로젝트를 진행할때</p>
                 <p>여러가지 배너를 직접 제작하여</p>
-                <p>작업물의 퀄리티와 실용성을</p>
+                <p>작업물의 퀄리티를</p>
                 <p>더 높히기 위해 노력했습니다</p>
 
                 <div class="inner">
-                    <span>마우스를 올리면 원본 비율의 이미지를 확인할 수 있습니다 :)</span>
+                    <span>사진을 클릭하시면 원본 비율의 이미지를 확인할 수 있습니다 :)</span>
 
                     <figure>
                         <img src="img/비오베.png" alt="디자인 작업물1">
+                        <span>X</span>
                     </figure>
 
                     <figure>
                         <img src="img/웨딩카드.png" alt="디자인 작업물2">
+                        <span>X</span>
                     </figure>
 
 
                     <figure>
                         <img src="img/쥬뗌므.png" alt="디자인 작업물3">
+                        <span>X</span>
                     </figure>
 
                     <figure>
                         <img src="img/일본여행.png" alt="디자인 작업물4">
+                        <span>X</span>
                     </figure>
 
                     <figure>
-                        <img src="img/.png" alt="디자인 작업물5">
+                        <img src="img/코롱스포츠.jpg" alt="디자인 작업물5">
+                        <span>X</span>
                     </figure>
 
                     <figure>
                         <img src="img/멜론.png" alt="디자인 작업물6">
+                        <span>X</span>
                     </figure>
 
                     <figure>
                         <img src="img/여름특가.png" alt="디자인 작업물7">
+                        <span>X</span>
                     </figure>
 
                     <figure>
                         <img src="img/아임미미.png" alt="디자인 작업물8">
+                        <span>X</span>
                     </figure>
 
                 </div><!-- .inner end -->
@@ -391,12 +494,10 @@
             <section class="end">
                 <h3>IN CONCLUSION</h3>
 
-                <div class="bg"></div>
-
-                <footer>
-                    <h5>github</h5>
-                    <a href="https://github.com/Ta3h0"><img src="img/github-mark.png" alt="깃허브"></a>
-                </footer>
+                <h4>디자인 진행률 55% / 코딩 진행도 90%</h4>
+                <p>정보, 리뉴얼 및 창작, 디자인 세부 디자인 더 필요함</p>
+                <p>스와이퍼 제외 모든 효과 및 애니메이션 직접 만든거 어필할 곳 찾기</p>
+                
             </section><!-- .end end -->
 
         </main>
