@@ -60,6 +60,8 @@ header .menu > li {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'SBAggro';
+    font-weight: bold;
 }
 
 header .menu li.on {

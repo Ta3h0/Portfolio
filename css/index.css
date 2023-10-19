@@ -6,18 +6,19 @@
 /* 헤더, 공통 css */
 @import url(common.css);
 
-/* 지마켓 산스 */
-@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+/* 폰트 */
+@import url(font.css);
 
 .main_visual {
     min-width: 1920px;
     width: 100%;
-    height: 100vh;
+    height: 931px;
     background-color: #ff7f50;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'SBAggroB';
 }
 
 .main_visual .inner {
@@ -41,19 +42,22 @@
 .main_visual .inner p {
     margin: 14px 0;
     font-size: 50px;
-    font-weight: 100;
     text-wrap: nowrap;
+    font-family: 'Pretendard';
 }
 
 .main_visual .inner h3 {
     font-size: 80px;
     margin: 30px 0;
+    font-weight: bold;
+    font-family: 'GmarketSans';
 }
 
 @keyframes slide {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-100%);
     }
@@ -82,14 +86,17 @@
     font-weight: bold;
 }
 
-.info, .site, .design, .end {
+.info,
+.site,
+.design,
+.end {
     width: 100%;
     display: none;
 }
 
 .info {
-    width: 100%;
-    height: 100vh;
+    width: 1920px;
+    height: 931px;
     justify-content: space-between;
     align-items: center;
     background: url(../img/info_bg.png) center center / cover no-repeat;
@@ -113,35 +120,39 @@
     text-align: center;
 }
 
-.info .left figure {
-    margin: 0 auto 60px;
-    width: 279px;
-    height: 325px;
-}
-
-.info .left .left_bottom h3 {
-    font-size: 35px;
-    font-weight: bold;
-    color: #ff6347;
-    margin-bottom: 13px;
-}
-
-.info .left .left_bottom p {
-    font-size: 25px;
+.info .right .right_bottom div:nth-of-type(2) p {
+    font-size: 20px;
     line-height: 1.3;
+    font-family: 'Pretendard';
+    font-weight: 300;
+    text-align: center;
 }
 
-.info .left .left_bottom p strong {
+.info .right .right_bottom div:nth-of-type(2) strong {
     font-size: 30px;
     color: #ff6347;
 }
 
 .info .right {
-    width: 1038px;
+    width: 910px;
     height: 788px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    position: relative;
+    margin-left: 200px;
+}
+
+.info .right::before {
+    content: '';
+    width: 3px;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    transform: translateY(-50%);
+    background-color: #fd8559;
+    border-radius: 100px;
 }
 
 .info .right .right_top,
@@ -150,47 +161,54 @@
     justify-content: space-between;
 }
 
-.info .right .right_top > div {
+.info .right .right_top>div {
     width: calc(100% / 2 - 30px);
-    padding: 39px;
 }
 
-.info .right .right_bottom > div {
-    width: 100%;
-    padding: 39px;
+.info .right .right_bottom>div {
+    width: calc(100% / 2 - 30px);
 }
 
 .info .right .title {
     font-size: 40px;
     color: #ff6347;
+    font-family: 'SBAggro';
 }
 
 .info .right p,
 .info .right a {
-    font-size: 25px;
+    font-size: 20px;
+    font-family: 'Pretendard';
+    font-weight: 300;
 }
 
 .info .right .right_top div h4 {
     font-size: 25px;
-    color: #ff6347;
+    color: #fd8559;
     margin: 20px 0 7px;
+}
+
+.info .right_top div:nth-of-type(2) {
+    text-align: center;
 }
 
 .info .right_top div:nth-of-type(2) div {
     width: 100%;
-    margin: 38px 0 74px;
+    margin: 38px 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.info .right_top div:nth-of-type(2) div:last-of-type {
-    margin-bottom: 0;
-}
-
-.info .right_top div:nth-of-type(2) div img {
-    width: 71px;
-    height: 85px;
+.info .right_top div:nth-of-type(2) img {
+    width: 67px;
+    height: 80px;
     display: block;
+    margin: 10px 30px;
+}
+
+.info .right .right_bottom div:nth-of-type(2) .title {
+    text-align: center;
 }
 
 .info .right .right_bottom .title {
@@ -199,7 +217,7 @@
 
 .info .right .right_bottom p {
     text-wrap: nowrap;
-    font-size: 23px;
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
@@ -257,6 +275,8 @@
 .site .inner_bg .inner .right p {
     font-size: 25px;
     margin: 16px 0;
+    font-family: 'Pretendard';
+    font-weight: 300;
 }
 
 .site .inner_bg .inner .right .btn {
@@ -280,11 +300,18 @@
 :root {
     --swiper-theme-color: tomato;
 }
-.swiper, .mySwiper, .swiper-initialized, .swiper-horizontal, .swiper-backface-hidden, #swiper-wrapper-bf155c101fcf54d3d {
+
+.swiper,
+.mySwiper,
+.swiper-initialized,
+.swiper-horizontal,
+.swiper-backface-hidden,
+#swiper-wrapper-bf155c101fcf54d3d {
     position: static !important;
 }
 
-.swiper-button-prev, .swiper-button-next {
+.swiper-button-prev,
+.swiper-button-next {
     transform: scale(2);
 }
 
@@ -305,9 +332,11 @@
     position: relative;
     padding-top: 60px;
     overflow: hidden;
+    background: url(../img/info_bg.png) center center / cover no-repeat;
 }
 
 .design h3 {
+    font-family: 'SBAggro';
     color: tomato;
     font-size: 60px;
     text-align: center;
@@ -315,9 +344,11 @@
 }
 
 .design p {
+    font-family: 'Pretendard';
+    font-weight: 300;
     text-align: center;
     margin: 5px 0;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .design .inner {
@@ -335,7 +366,9 @@
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
-    opacity: 0.7;
+    opacity: 1;
+    font-family: 'Pretendard';
+    font-weight: 200;
 }
 
 .design .inner figure {
@@ -353,7 +386,7 @@
 
 .design .inner figure:hover img {
     opacity: 1;
-    
+
 }
 
 .design .inner figure.on img {
@@ -436,13 +469,19 @@
 }
 
 .end {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: #fd8559;
+    position: relative;
+    color: white;
+    overflow: hidden;
 }
-.end h3 {
-    color: #ff7f50;
+
+.end .title {
+    color: white;
     font-size: 60px;
+    margin: 103px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .end h4 {
@@ -450,6 +489,110 @@
     margin: 30px 0 20px;
 }
 
-.end p {
+.end .left,
+.end .right {
+    width: 50%;
+    height: 931px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.7s;
+}
+
+.end .left {
+    background-color: #ff8e65;
+}
+
+.end .right {
+    background-color: #ff9974;
+}
+
+.end .left strong,
+.end .right strong {
+    font-size: 40pt;
+    font-family: 'SBAggro';
+}
+
+.end .left p,
+.end .right p {
     font-size: 25px;
+    font-family: 'GmarketSans';
+    margin: 20px 0;
+}
+
+.end .line,
+.end .contact {
+    position: absolute;
+}
+
+.end .line {
+    top: 750px;
+    left: 0;
+    text-wrap: nowrap;
+    animation: slide 270s infinite normal linear;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    opacity: 0.1;
+}
+
+.end .line span {
+    font-size: 150px;
+    font-weight: bold;
+    font-family: 'GmarketSans';
+}
+
+.end .contact {
+    top: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 650px;
+    height: 192px;
+}
+
+.end .contact h3 {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.end .contact .inner {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.end .contact .inner .item {
+    width:  calc(100% / 2 - 30px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 15px;
+}
+
+
+.end .contact .inner .item img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    display: block;
+}
+
+.end .contact .inner .item:nth-of-type(2) img {
+    height: 33px;
+    width: 33px;
+}
+
+.end .contact .inner .item:nth-of-type(3) img {
+    height: 28px;
+}
+
+.end .contact .inner .item p {
+    font-family: 'Pretendard';
+    font-size: 25px;
+    font-weight: 300;
 }

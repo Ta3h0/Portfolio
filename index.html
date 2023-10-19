@@ -109,6 +109,8 @@
                         }
                     }
 
+                 
+
                     //페이지 번호에 맞춰서 헤더 메뉴 li 색상 변경
                     if (c == 0) {
                         $('.menu li').css({
@@ -152,9 +154,10 @@
 
                     pagingCount.removeClass('on');
                     pagingCount.eq($(this).index()).addClass('on');
+
                     setTimeout(function () {
-                            $('body').removeClass('on');
-                        }, 800)
+                        $('body').removeClass('on');
+                    }, 800)
 
                     //휠 풀페이징과 카운트 연동하기
                     c = $(this).index();
@@ -180,7 +183,7 @@
                         })
                     } else {
                         $('.menu li').css({
-                            'color': '#333'
+                            'color': '#fff'
                         })
                     }
 
@@ -204,7 +207,44 @@
 
             }); //$('.design figure span').click end
 
+            //마치며 left에 마우스 올리면 left가 부각되게
+            $('.end .left').mouseenter(function (){
+                $('.end .left').stop().css({
+                    'width' : '70%',
+                    'background-color' : '#ff662e'
+                })
+    
+                $('.end .right').stop().css({
+                    'width' : '30%',
+                    'background-color' : '#ffb093'
+                })
+            })
+    
+            //마치며 right에 마우스 올리면 right가 부각되게
+            $('.end .right').mouseenter(function (){
+                $('.end .right').stop().css({
+                    'width' : '70%',
+                    'background-color' : '#ff662e'
+                })
+    
+                $('.end .left').stop().css({
+                    'width' : '30%',
+                    'background-color' : '#ffb093'
+                })
+            })
+
+            $('.end .contact').click(function (){
+                if($('.end .contact .inner').css('display') == 'none') {
+                    $('.end .contact .inner').slideDown();
+                    $('.end .contact .inner').css({
+                        'display' : 'flex'
+                    });
+                } else {
+                    $('.end .contact .inner').slideUp();
+                }
+            })
         }); //jQuery end
+
 
     </script>
 </head>
@@ -229,7 +269,7 @@
                         <img src="img/eye.png" alt="메인비주얼 눈 일러스트">
                     </figure>
                     <h4>#발전 #도전</h4>
-                    
+
                     <p>안녕하세요!</p>
                     <p><strong>꾸준히</strong> 성장하는 <strong>발전형</strong> 웹 퍼블리셔</p>
                     <h3>김태호</h3>
@@ -249,78 +289,75 @@
 
             <section class="info">
                 <div class="inner">
-                <div class="left">
-                    <figure>
-                        <img src="img/Charactor.png" alt="캐릭터 일러스트">
-                    </figure>
+                    <div class="left">
+                        <figure>
+                            <img src="img/Charactor.png" alt="캐릭터 일러스트">
+                        </figure>
 
-                    <div class="left_bottom">
-                        <h3>Motto</h3>
-                        <p>웹 퍼블리싱이란<br>
-                            꾸준함과 새로운 영감이<br>
-                            필수라고 생각합니다<br>
-                            저는 꾸준함과 영감이 무기인<br>
-                            <strong>웹 퍼블리셔</strong>입니다
-                        </p>
-                    </div>
-                </div><!-- .left end -->
+                    </div><!-- .left end -->
 
-                <div class="right">
-                    <div class="right_top">
-                        <div>
-                            <h3 class="title">About Me</h3>
-
-                            <h4>Name</h4>
-                            <p>김태호</p>
-
-                            <h4>Born</h4>
-                            <p>1997.06.12</p>
-
-                            <h4>Phone</h4>
-                            <p>010-4003-8074</p>
-
-                            <h4>E-mail</h4>
-                            <p>Ta3h0_@naver.com</p>
-
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/Ta3h0_">https://github.com/Ta3h0_</a>
-                        </div>
-
-                        <div>
-                            <h3 class="title">기술</h3>
-
-                            <h4>For Code</h4>
+                    <div class="right">
+                        <div class="right_top">
                             <div>
-                                <img src="img/html.png" alt="html">
-                                <img src="img/css.png" alt="css">
-                                <img src="img/js.png" alt="java script">
-                                <img src="img/react.png" alt="react">
+                                <h3 class="title">About Me</h3>
+
+                                <h4>Name</h4>
+                                <p>김태호</p>
+
+                                <h4>Born</h4>
+                                <p>1997.06.12</p>
+
+                                <h4>Phone</h4>
+                                <p>010-4003-8074</p>
+
+                                <h4>E-mail</h4>
+                                <p>Ta3h0_@naver.com</p>
+
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/Ta3h0_">https://github.com/Ta3h0_</a>
                             </div>
 
-                            <h4>For Design</h4>
                             <div>
-                                <img src="img/Ps.png" alt="photopshop">
-                                <img src="img/figma.png" alt="figma">
-                                <img src="img/ai.png" alt="ai">
+                                <h3 class="title">Skills</h3>
+                                <div>
+                                    <img src="img/html.png" alt="html">
+                                    <img src="img/css.png" alt="css">
+                                    <img src="img/js.png" alt="java script">
+                                    <img src="img/react.png" alt="react">
+
+                                    <img src="img/Ps.png" alt="photopshop">
+                                    <img src="img/figma.png" alt="figma">
+                                    <img src="img/ai.png" alt="ai">
+                                </div>
                             </div>
-                        </div>
 
-                    </div><!-- .right_top end -->
+                        </div><!-- .right_top end -->
 
-                    <div class="right_bottom">
+                        <div class="right_bottom">
+                            <div>
+                                <h3 class="title">Education</h3>
+                                <p>2014.03 ~ 2016.02 부산 동성고등학교 졸업</p>
+                                <p>2016.03 ~ 2018.02 부산 예술대학교 졸업<br>
+                                    (실용음악학과 보컬전공)
+                                </p>
+                                <p>2023.06 ~ 2023.11 UI/UX 웹 퍼블리셔 과정 수료<br>
+                                    (그린 컴퓨터 아카데미)
+                                </p>
+                            </div>
+
+                            
                         <div>
-                            <h3 class="title">학력</h3>
-                            <p>2014.03 ~ 2016.02 부산 동성고등학교 졸업</p>
-                            <p>2016.03 ~ 2018.02 부산 예술대학교 졸업<br>
-                                (실용음악학과 보컬전공)
-                            </p>
-                            <p>2023.06 ~ 2023.11 웹 퍼블리셔 과정 수료<br>
-                                (그린 컴퓨터 아카데미)
+                            <h3 class="title">Motto</h3>
+                            <p>웹 퍼블리싱이란<br>
+                                꾸준함과 새로운 영감이<br>
+                                필수라고 생각합니다<br>
+                                저는 꾸준함과 영감이 무기인<br>
+                                <strong>웹 퍼블리셔</strong>입니다
                             </p>
                         </div>
-                    </div><!-- .right_bottom end -->
-                </div><!-- .right end -->
-            </div><!-- .inner end -->
+                        </div><!-- .right_bottom end -->
+                    </div><!-- .right end -->
+                </div><!-- .inner end -->
             </section><!-- .info end -->
 
             <section class="site">
@@ -390,7 +427,7 @@
                                         <h4>사이트 명 : 먼스커피바</h4>
 
                                         <p>작업 기간 : 13일</p>
-                                        <p>작업 내용 : 리뉴얼(디자인, 컨텐츠)</p>
+                                        <p>작업 내용 : 리뉴얼(디자인)</p>
                                         <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
 
@@ -416,7 +453,7 @@
                                         <h4>사이트 명 : 하이버</h4>
 
                                         <p>작업 기간 : 10일</p>
-                                        <p>작업 내용 : 리뉴얼(디자인, 컨텐츠)</p>
+                                        <p>작업 내용 : 모바일 사이트 PC화(+ 컨텐츠)</p>
                                         <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
 
@@ -437,7 +474,7 @@
             </section><!-- .site end -->
 
             <section class="design">
-                <h3>DESIGN PROJECT</h3>
+                <h3>DESIGN ARTICLE</h3>
                 <p>프로젝트를 진행할때</p>
                 <p>여러가지 배너를 직접 제작하여</p>
                 <p>작업물의 퀄리티를</p>
@@ -492,12 +529,63 @@
             </section><!-- .design end -->
 
             <section class="end">
-                <h3>IN CONCLUSION</h3>
+                <h3 class="title">CONTACT_</h3>
+                <div class="left">
+                    <div>
+                    <strong>마음에 드셨나요?</strong>
+                    <p>마음에 드셨다면 언제 어디서든</p>
+                    <p>다시 만날 수 있길 바라겠습니다</p>
+                    <p>제 작업물이 마음에 들었거나</p>
+                    <p>제게 궁금한 점이 있으시다면</p>
+                    <p>아래에 연락처를 눌러 연락 주세요</p>
+                    <p>어떤 내용이라도 환영입니다 :)</p>
+                </div>
+                </div><!-- .left end -->
+                <div class="right">
+                    <div>
+                    <strong>감사합니다!</strong>
+                    <p>머물러 있는 사람이 아닌</p>
+                    <p>쉬지 않고 흘러가며</p>
+                    <p>항상 사용자의 입장에서 생각하고</p>
+                    <p>어제보다 내일이 기대되는</p>
+                    <p>성장형 웹 퍼블리셔가</p>
+                    <p>될 것을 약속 드리겠습니다</p>
+                </div>
+                </div><!-- .right end -->
 
-                <h4>디자인 진행률 55% / 코딩 진행도 90%</h4>
-                <p>정보, 리뉴얼 및 창작, 디자인 세부 디자인 더 필요함</p>
-                <p>스와이퍼 제외 모든 효과 및 애니메이션 직접 만든거 어필할 곳 찾기</p>
-                
+                <div class="line">
+                    <span>Thank you so much</span>
+                    <span>Thank you so much</span>
+                    <span>Thank you so much</span>
+                    <span>Thank you so much</span>
+                    <span>Thank you so much</span>
+                </div><!-- .line end -->
+
+                <div class="contact">
+                    <h3>연락처</h3>
+                    <div class="inner" style="display: none;">
+                        <div class="item">
+                            <img src="img/call.png" alt="call">
+                            <p>010 - 4003 - 8074</p>
+                        </div><!-- .item end -->
+                        
+                        <div class="item">
+                            <img src="img/mail.png" alt="mail">
+                            <p>Ta3h0_@naver.com</p>
+                        </div><!-- .item end -->
+                        
+                        <div class="item">
+                            <img src="img/kakaotalk.png" alt="kakaotalk">
+                            <p>Crong0612</p>
+                        </div><!-- .item end -->
+                        
+                        <div class="item">
+                            <img src="img/instagram.png" alt="Instagram">
+                            <p>@Ta3h0_</p>
+                        </div><!-- .item end -->
+                        
+                    </div><!-- .inner -->
+                </div><!-- .contact end -->
             </section><!-- .end end -->
 
         </main>
