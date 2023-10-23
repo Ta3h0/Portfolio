@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 탭 아이콘? title 앞에 이미지 뜨는거 넣어주기 -->
+    <link rel="icon" href="img/로고.png" />
+    <link rel="apple-touch-icon" href="img/로고.png" />
+
+    <title>하이버 - 국내 최초 남자쇼핑앱</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="lib/carouselTicker.css" media="screen">
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+
+    <script>
+
+
+        //html,css,js 다 읽고 실행하기
+        window.onload = function () {
+            //로딩창 사라지게 하기
+            $('.loading').fadeOut();
+            //로딩창 동안은 스크롤 안되던게 로딩 완료후 가능하게 하기
+            $('html').css({
+                'overflow': 'visible'
+            })
+        }
+
+        $(function () {
+
+            let depth01 = $('.depth01');
+            let depth02 = $('.depth02');
+            let menuOpen = $('.menu_open');
+            let menuClose = $('.menu_close');
+            let menuCloseBtn = $('.menu_close .closebtn');
+            let POV = $('main').offset().top;
+            let searchBtn = $('.search');
+            let search = $('.search_bg');
+            let cate = $('.cont02 ul li');
+            let table = $('.cont02 .list');
+            let notice = $('.cont04 .cont04_list_notice');
+            let popClose = $('.close');
+            let popUp = $('.popup')
+
+            popClose.click(function () {
+                popUp.fadeOut();
+            })
+
+
+            //로딩창 텍스트 애니메이션
+            setTimeout(function () {
+                $('.fade_right').css({
+                    'opacity': '1',
+                    'transform': 'translateX(0)'
+                })
+            }, 500)
+
+            //로딩창 텍스트 애니메이션2
+            setTimeout(function () {
+                $('.fade_right2').delay(3000).css({
+                    'opacity': '1',
+                    'transform': 'translateX(0)'
+                })
+            }, 1500)
+
+            //go_top버튼 누르면 최상위로 가기
+            $('.go_top').click(function () {
+                $(window).scrollTop(0)
+            })
+
+            //depth01에 호버하면 2차메뉴 슬라이드 다운
+            depth01.mouseenter(function () {
+                $(this).children().stop().slideDown();
+            })
+
+            //마우스 떠나면 2차메뉴 사라짐
+            depth01.mouseleave(function () {
+                depth02.stop().slideUp();
+            })
+
+            let i = 0;
+
+            //검색창 보이기
+            searchBtn.click(function () {
+                search.fadeToggle();
+
+                if (i == 0) {
+                    i++;
+                    $('.search button').text('Close');
+                } else {
+                    i = 0;
+                    $('.search button').text('Search')
+                }
+
+                console.log(i)
+            })
+
+            //메뉴보기 누르면 메뉴 나오기
+            menuOpen.click(function () {
+                menuClose.css({
+                    'left': '0'
+                })
+            });
+
+            //전체메뉴보기 닫기
+            menuCloseBtn.click(function () {
+                menuClose.css({
+                    'left': '-100%'
+                })
+            });
+
+            //전체메뉴보기 나와있을때 창 밖 클릭시 메뉴가 자동으로 들어감
+            $('body').click(function () {
+                if (menuClose.css('left') == '0px') {
+                    menuClose.css({
+                        'left': '-100%'
+                    })
+                }
+            })
+
+            //전체메뉴보기 나와있을때 창 밖 클릭시 메뉴가 자동으로 들어감 3
+            $('footer').click(function () {
+                if (menuClose.css('left') == '0px') {
+                    menuClose.css({
+                        'left': '-100%'
+                    })
+                }
+            })
+
+            //전체메뉴보기 나와있을때 창 밖 클릭시 메뉴가 자동으로 들어감 
+            $('.search_bg').click(function () {
+                if (menuClose.css('left') == '0px') {
+                    menuClose.css({
+                        'left': '-100%'
+                    })
+                }
+            })
+
+            //스크롤 내릴시 헤더 영역 진하게 만들기
+            //스크롤시 go_top 위치 바뀌기
+            $(window).scroll(function () {
+
+                let scroll = $(window).scrollTop();
+
+                let position = scroll + 800
+
+                if (POV < scroll) {
+                    /*                     $('header').css({
+                                            'background-color': 'black'
+                                        }) */
+                    $('header').addClass('on');
+                }
+                else {
+                    /*                     $('header').css({
+                                            'background-color': 'rgba(0, 0, 0, 0.356)'
+                                        }) */
+                    $('header').removeClass('on');
+                }
+
+                console.log(scroll)
+
+            });
+
+            //메인이벤트 스와이퍼 가져오기
+            var swiper = new Swiper(".main_visual", {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loop: true,
+                scroll: false,
+
+                // 피그네이션 바 설정
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                //이전, 다음 버튼 세팅
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                centeredSlides: true,
+                // 오토플레이 설정
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                },
+            });
+
+            //컨텐츠3 카테고리 누르면 밑에 컨텐츠 리스트 바뀌기
+            cate.click(function () {
+                cate.removeClass('on');
+                table.removeClass('on');
+
+                $(this).addClass('on');
+                table.eq($(this).index()).addClass('on');
+            });
+
+            //컨텐츠4 스와이퍼
+            var swiper = new Swiper(".cont04_list", {
+                loop: true,
+                scrollbar: {
+                    el: ".swiper-scrollbar",
+                    hide: true,
+                },
+            });
+
+            //컨텐츠4 스와이퍼 알려주기 클릭하면 사라지고 다시 안나타나기
+            notice.click(function () {
+                $(this).fadeOut();
+            });
+
+
+        }); // jQuery end
+
+    </script>
+</head>
+
+<body>
+    <div class="popup">
+        <img src="img/팝업이미지.png" alt="1">
+        <div class="close">
+            <h6>닫기</h6>
+        </div>
+    </div><!-- .popup end -->
+
+    <div class="loading">
+        <img src="img/로고.png" alt="1">
+        <div class="fade_right">
+            세계 최초 종합 남성 쇼핑몰
+        </div>
+        <div class="fade_right2">
+            하이버에 오신걸 환영합니다!
+        </div>
+        <p>로딩중...</p>
+    </div><!-- .loading end -->
+
+    <div class="wrap">
+
+        <header>
+
+            <div class="inner">
+
+
+
+                <div class="logo">
+                    <h1>
+                        <a href="index.html">
+                            <img src="img/로고.png" alt="1">
+                        </a>
+                    </h1>
+                </div><!-- .logo end -->
+
+                <nav>
+                    <ul class="gnb">
+                        <li class="depth01">
+                            <a href="#">카테고리</a>
+                            <ul class="depth02">
+                                <li><a href="#">브랜드</a></li>
+                                <li><a href="#">쇼핑몰</a></li>
+                                <li><a href="#">럭셔리</a></li>
+                                <li><a href="#">스포츠</a></li>
+                                <li><a href="#">디지털</a></li>
+                                <li><a href="#">라이프</a></li>
+                            </ul><!-- .depth02 end -->
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">랭킹</a>
+                            <ul class="depth02">
+                                <li><a href="#">아우터</a></li>
+                                <li><a href="#">상의</a></li>
+                                <li><a href="#">하의</a></li>
+                                <li><a href="#">신발</a></li>
+                                <li><a href="#">악세사리</a></li>
+                                <li><a href="#">디지털</a></li>
+                                <li><a href="#">라이프</a></li>
+                            </ul><!-- .depth02 end -->
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">이벤트</a>
+                            <ul class="depth02">
+                                <li><a href="#">진행중</a></li>
+                                <li><a href="#">종료</a></li>
+                            </ul><!-- .depth02 end -->
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">룩북</a>
+                            <ul class="depth02">
+                                <li><a href="#">MD Pick</a></li>
+                                <li><a href="#">인기 룩북</a></li>
+                                <li><a href="#">스타일별</a></li>
+                            </ul><!-- .depth02 end -->
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="about.html">소개</a>
+                        </li><!-- .depth01 end -->
+                    </ul><!-- .gnb end -->
+                </nav>
+
+                <div class="search">
+                    <img src="img/search.png" alt="검색이모지">
+                    <button>Search</button>
+                </div>
+
+                <div class="menu_open">
+                    <img src="img/menu.png" alt="menu">
+                </div><!-- .menu_open end -->
+
+            </div><!-- .inner end -->
+
+            <div class="menu_close">
+
+                <p class="closebtn">X</p>
+
+                <ul>
+                    <li><a href="login.html">LOGIN</a></li>
+                    <li><a href="#">JOIN US</a></li>
+                    <li><a href="#">ORDER</a></li>
+                    <li><a href="#">MY PAGE</a></li>
+                    <li><a href="#">CART</a></li>
+                </ul>
+
+                <hr>
+
+                <h5>BRAND</h5>
+
+                <ul>
+                    <li><a href="#">Dior</a></li>
+                    <li><a href="#">Balenciaga</a></li>
+                    <li><a href="#">Bottega Veneta</a></li>
+                    <li><a href="#">ZARA</a></li>
+                    <li><a href="#">Louis Vuitton</a></li>
+                </ul>
+
+                <hr>
+
+                <h5>CS CENTER</h5>
+
+                <ul>
+                    <li>1670-6576</li>
+                    <li>상담시간 : 10:00 ~ 17:00 <br>(주말 및 공휴일 휴무)</li>
+                    <li>점심시간 : 12:30 ~ 13:30</li>
+                    <li><a href="#">Notice</a></li>
+                    <li><a href="#">Q&A</a></li>
+                    <li><a href="#">Review</a></li>
+                </ul>
+
+                <hr>
+
+                <h5>BANKING INFO</h5>
+
+                <ul>
+                    <li>신한 140-008-012608</li>
+                    <li>예금주 : (주)하이버</li>
+                </ul>
+
+            </div><!-- .menu_close end -->
+
+            <div class="search_bg">
+
+                <div class="search_tab">
+                    <input type="text" placeholder="원하시는 상품을 검색해보세요">
+                    <button><img src="img/search.png" alt="1"></button>
+                </div><!-- .search_tab end -->
+
+            </div><!-- .search_bg end-->
+        </header>
+
+        <main>
+
+            <div class="for_sticky">
+
+                
+
+                <div class="swiper main_visual">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/메인이벤트.png" alt="메인이벤트">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/메인이벤트2.png" alt="메인이벤트">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/메인이벤트3.jpg" alt="메인이벤트">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/메인이벤트4.png" alt="메인이벤트">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+
+                    </div><!-- .swiper-wrapper end -->
+
+                    <div class="swiper-pagination"></div>
+
+                </div><!-- .main_visual end -->
+
+                <section class="cont01">
+
+                    <div class="title">
+                        <h1>NEW ARRIVALS</h1>
+                        <a href="#">더보기 ></a>
+                    </div><!-- .title end -->
+
+                    <div class="list">
+
+                        <div class="top">
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-1.jpg" class="front" alt="front">
+                                    <img src="img/컨텐츠1-1상세.jpg" class="back" alt="back">
+                                </figure>
+                                <span>독보남</span>
+                                <h3>[시즌오프][1+1+1] 머슬핏 아이스 신소재 반팔티 빅사이즈 95~120사이즈까지 목...</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">50%</p>
+                                    <del>47,500원</del>
+                                </div>
+                                <p class="price">23,800원</p>
+                            </div><!-- .item end -->
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-2.jpg" class="front" alt="front">
+                                    <img src="img/컨텐츠1-2상세.jpg" class="back" alt="back">
+                                </figure>
+                                <span>바이슬림</span>
+                                <h3>[단독입수][당일배송] 2color 그물 반팔 니트 #남친룩</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">19%</p>
+                                    <del>49,000원</del>
+                                </div>
+                                <p class="price">39,700원</p>
+                            </div><!-- .item end -->
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-3.png" class="front" alt="front">
+                                </figure>
+                                <span>링크샵</span>
+                                <h3>[시즌오프][당일출고] 엠보 반집업 카라 반팔 (3 color)</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">40%</p>
+                                    <del>32,800원</del>
+                                </div>
+                                <p class="price">23,800원</p>
+                            </div><!-- .item end -->
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-4.jpg" class="front" alt="front">
+                                    <img src="img/컨텐츠1-4상세.jpg" class="back" alt="back">
+                                </figure>
+                                <span>피오데일리</span>
+                                <h3>(~5XL)남자 머슬핏 카라니트 케이블 반집업 반팔티 (5 Color)</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">44%</p>
+                                    <del>70,000원</del>
+                                </div>
+                                <p class="price">39,200원</p>
+                            </div><!-- .item end -->
+
+                        </div><!-- .top end -->
+
+                        <div class="bottom">
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-5.jpg" class="front" alt="front">
+                                </figure>
+                                <span>마인드핏</span>
+                                <h3>[1+1할인/주문폭주] 오버핏 메쉬 니트 시스루 펀칭 후드 집업 가디건 맨투맨</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">50%</p>
+                                    <del>73,000원</del>
+                                </div>
+                                <p class="price">36,500원</p>
+                            </div><!-- .item end -->
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-6.png" class="front" alt="front">
+                                </figure>
+                                <span>히코튼</span>
+                                <h3>[시즌오프]베스트 투웨이 후드 집업 조끼 (5 color)</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">18%</p>
+                                    <del>36,000원</del>
+                                </div>
+                                <p class="price">29,500원</p>
+                            </div><!-- .item end -->
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-7.jpeg" class="front" alt="front">
+                                </figure>
+                                <span>독보남</span>
+                                <h3>[SET] 오버핏 유니버시티 반팔 반바지 셋업 세트 5793</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">50%</p>
+                                    <del>47,500원</del>
+                                </div>
+                                <p class="price">23,800원</p>
+                            </div><!-- .item end -->
+
+                            <div class="item">
+                                <figure>
+                                    <img src="img/컨텐츠1-8.jpeg" class="front" alt="front">
+                                    <img src="img/컨텐츠1-8상세.jpeg" class="back" alt="back">
+                                </figure>
+                                <span>위노드</span>
+                                <h3>[당일출고/1+1할인] 오버핏 여름 데님 셔츠 생지 진청 블랙 오버핏 남방 카라 포켓 린넨 청...</h3>
+                                <hr>
+                                <div class="sale">
+                                    <p class="percent">30%</p>
+                                    <del>49,900원</del>
+                                </div>
+                                <p class="price">34,900원</p>
+                            </div><!-- .item end -->
+
+                        </div><!-- .top end -->
+
+                    </div><!-- .list end -->
+
+                </section><!-- .cont01 end -->
+
+                <section class="cont02">
+
+                    <h1>WEEKLY BEST ITEMS</h1>
+
+                    <ul class="tab_menu">
+                        <li class="on">브랜드</li>
+                        <li>쇼핑몰</li>
+                        <li>럭셔리</li>
+                        <li>스포츠</li>
+                        <li>디지털</li>
+                        <li>라이프</li>
+                    </ul><!-- .tab_menu end -->
+
+                    <div class="list on">
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-브랜드-1.jpg" class="front" alt="front">
+                                <img src="img/컨텐츠2-브랜드-1상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>엑스컨테이너</span>
+                            <h3>EXC 와이드데님팬츠 (6컬러)ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h3>
+
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">20%</p>
+                                <del>39,000원</del>
+                            </div>
+                            <p class="price">31,200원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-브랜드-2.jpg" class="front" alt="front">
+                                <img src="img/컨텐츠2-브랜드-2상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>어게인스트올오즈</span>
+                            <h3>[쿠폰가 26,820원] [1+1] [당일출고] 하프 집업 카라 반팔 쿨 니트 2PACK</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">70%</p>
+                                <del>99,300원</del>
+                            </div>
+                            <p class="price">29,800원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-브랜드-3.jpg" class="front" alt="front">
+                            </figure>
+                            <span>1989스탠다드</span>
+                            <h3>[쿠폰가 29,450원][1+1](하이버 단독구성)1989스탠다드 기모 후드 4종</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">69%</p>
+                                <del>190,000원</del>
+                            </div>
+                            <p class="price">58,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-브랜드-4.jpg" class="front" alt="front">
+                                <img src="img/컨텐츠2-브랜드-4상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>리플라이퍼키</span>
+                            <h3>[시즌오프][8월 28일 예약배송] HT8705 웨어에버 와이드 데님 (LIGHT WASHED)</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">10%</p>
+                                <del>58,000원</del>
+                            </div>
+                            <p class="price">52,200원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-브랜드-5.jpg" class="front" alt="front">
+                            </figure>
+                            <span>멜로우컨셉</span>
+                            <h3>[쿠폰가 28,980원][1+1] MCT HM01 Black 오버핏 맨투맨 숏팬츠 (set)</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">50%</p>
+                                <del>69,000원</del>
+                            </div>
+                            <p class="price">34,500원</p>
+                        </div><!-- .item end -->
+
+                    </div><!-- .list end -->
+
+
+                    <div class="list">
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-쇼핑몰-1.jpg" class="front" alt="front">
+                                <img src="img/컨텐츠2-쇼핑몰-1상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>마인드핏</span>
+                            <h3>[1+1할인/사계절]벌룬핏 핀턱 카고 밑단 스트링 조거 와이드 슬랙스 팬츠 바지</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">19%</p>
+                                <del>26,800원</del>
+                            </div>
+                            <p class="price">21,700원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-쇼핑몰-2.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>상드르</span>
+                            <h3>여름 쿨링 카라티 버튼 린넨 머슬핏 하프 니트 반팔 (12colors)</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">50%</p>
+                                <del>56,800원</del>
+                            </div>
+                            <p class="price">28,400원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-쇼핑몰-3.jpg" class="front" alt="front">
+                                <img src="img/컨텐츠2-쇼핑몰-3상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>나름</span>
+                            <h3>[SET][당일출고] 여름준비 미리하자! 오버핏 브루클린 프린팅 반팔 티셔츠 + 와이드 린넨...</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">22%</p>
+                                <del>49,600원</del>
+                            </div>
+                            <p class="price">38,700원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-쇼핑몰-4.jpg" class="front" alt="front">
+                                <img src="img/컨텐츠2-쇼핑몰-4상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>큐쓰</span>
+                            <h3>[당일출고][여름반팔&긴팔] 오버핏 옥스포드 남방 셔츠 소라 화이트 남친룩 원조(3color)</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">65%</p>
+                                <del>80,400원</del>
+                            </div>
+                            <p class="price">28,100원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-쇼핑몰-5.jpg" class="front" alt="front">
+                                <img src="img/컨텐츠2-쇼핑몰-5상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>독보남</span>
+                            <h3>[SET] 유니버시티반팔+린넨와이드데님ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">53%</p>
+                                <del>40,000원</del>
+                            </div>
+                            <p class="price">18,800원</p>
+                        </div><!-- .item end -->
+
+                    </div><!-- .list end -->
+
+                    <div class="list">
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-럭셔리-1.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>하이엔드부티크</span>
+                            <h3>[당일출고/나이키코리아] 나이키 감마 포스 화이트 세일 블랙 운동화 신발 에어포스 DX9176</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">7%</p>
+                                <del>92,000원</del>
+                            </div>
+                            <p class="price">78,000원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-럭셔리-2.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-럭셔리-2상세.jpg" class="back" alt="back">
+                            </figure>
+                            <span>boutiquejp</span>
+                            <h3>[해외]꼼데가르송 반팔티 레드와펜 블랙와펜ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">20%</p>
+                                <del>92,125원</del>
+                            </div>
+                            <p class="price">73,700원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-럭셔리-3.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>뉴욕스토리</span>
+                            <h3>[해외] 폴로 랄프로렌 남성 옥스포드 코튼 긴팔 셔츠 (클래식핏/슬림핏)</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">42%</p>
+                                <del>187,700원</del>
+                            </div>
+                            <p class="price">108,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-럭셔리-4.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>디나피노</span>
+                            <h3>[쿠폰가126,960원]국내배송)버버리 23SS 8065483 카드지갑</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">25%</p>
+                                <del>184,000원</del>
+                            </div>
+                            <p class="price">138,000원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-럭셔리-5.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-럭셔리-5상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>블레스컴퍼니</span>
+                            <h3>카시오 메탈 시계 공용 전자 빈티지 A158WA-1D</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">1%</p>
+                                <del>29,900원</del>
+                            </div>
+                            <p class="price">29,600원</p>
+                        </div><!-- .item end -->
+
+                    </div><!-- .list end -->
+
+                    <div class="list">
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-스포츠-1.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-스포츠-1상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>에인트</span>
+                            <h3>나이키 RPL 우븐 바람막이 BV6881-010ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">29%</p>
+                                <del>54,770원</del>
+                            </div>
+                            <p class="price">38,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-스포츠-2.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-스포츠-2상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>블랙보리</span>
+                            <h3>나이키 에센셜 프렌치테리 트리플 스우시 쇼츠 반바지</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">30%</p>
+                                <del>42,700원</del>
+                            </div>
+                            <p class="price">29,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-스포츠-3.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-스포츠-3상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>하데스</span>
+                            <h3>반스 올드스쿨 스니커즈 VN000D3HY28 블랙</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">35%</p>
+                                <del>76,800원</del>
+                            </div>
+                            <p class="price">49,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-스포츠-4.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>밀리브로</span>
+                            <h3>보급형 코리아아미 로카 후리스 검정 - 군인 곰신 px 블랙 간절기 환절기 트레이닝 코디 반...</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">23%</p>
+                                <del>16,800원</del>
+                            </div>
+                            <p class="price">12,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-스포츠-5.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>세로</span>
+                            <h3>[라코스테] 빅크록 오가닉 루즈핏 티셔츠 8종 택1</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">60%</p>
+                                <del>97,300원</del>
+                            </div>
+                            <p class="price">38,900원</p>
+                        </div><!-- .item end -->
+
+                    </div><!-- .list end -->
+
+                    <div class="list">
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-디지털-1.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>스카이</span>
+                            <h3>[당일발송][1+1]스카이 미니 도킹형 보조배터리 5000mAh X12mini</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">61%</p>
+                                <del>49,800원</del>
+                            </div>
+                            <p class="price">19,400원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-디지털-2.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-디지털-2상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>우드스탁</span>
+                            <h3>무선 헤드폰 블루투스 헤드셋 이어폰 STBT-H350MAX</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">12%</p>
+                                <del>26,000원</del>
+                            </div>
+                            <p class="price">22,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-디지털-3.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>엠텍</span>
+                            <h3>UM2 UMWH-MF5IN1 아이폰 갤럭시 애플워치 맥세이프 알람시계 무드등 15W 고속 무...</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">31%</p>
+                                <del>59,500원</del>
+                            </div>
+                            <p class="price">40,700원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-디지털-4.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>로아파파</span>
+                            <h3>오엘라 OB-NR01 물세척가능 간편 콧털정리 휴대용 코털제거기</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">14%</p>
+                                <del>11,500원</del>
+                            </div>
+                            <p class="price">9,900원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-디지털-5.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-디지털-5상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>스톤스틸</span>
+                            <h3>아이폰 MBTI 성격유형 테두리 사각 실리콘 젤리 스퀘어 컬러케이스 핸드폰 휴대폰 아이...</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">50%</p>
+                                <del>17,000원</del>
+                            </div>
+                            <p class="price">8,500원</p>
+                        </div><!-- .item end -->
+
+                    </div><!-- .list end -->
+
+                    <div class="list">
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-라이프-1.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-라이프-1상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>오아월드</span>
+                            <h3>오아 브러쉬 고데기 무선 미니 고데기ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">30%</p>
+                                <del>45,000원</del>
+                            </div>
+                            <p class="price">31,500원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-라이프-2.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>딥쉬</span>
+                            <h3>[1+1] 딥쉬 니치 퍼퓸 섬유향수 100mlㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">52%</p>
+                                <del>30,000원</del>
+                            </div>
+                            <p class="price">14,400원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-라이프-3.jpeg" class="front" alt="front">
+                                <img src="img/컨텐츠2-라이프-3상세.jpeg" class="back" alt="back">
+                            </figure>
+                            <span>오아월드</span>
+                            <h3>오아 클린이워터B 구강세정기 강력 맥동수압 물치실 치아 세정기 휴대용</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">50%</p>
+                                <del>38,800원</del>
+                            </div>
+                            <p class="price">19,400원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-라이프-4.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>다슈</span>
+                            <h3>다슈 클래식 스타일 그루밍 토닉 200mlㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">19%</p>
+                                <del>18,000원</del>
+                            </div>
+                            <p class="price">14,600원</p>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <figure>
+                                <img src="img/컨텐츠2-라이프-5.jpeg" class="front" alt="front">
+                            </figure>
+                            <span>주식회사어댑트</span>
+                            <h3>[1+1] OBGE 오브제 퍼펙트 옴므 쿠션 1개+원스탭 포어클렌징시트 1개</h3>
+                            <hr>
+                            <div class="sale">
+                                <p class="percent">42%</p>
+                                <del>54,300원</del>
+                            </div>
+                            <p class="price">31,500원</p>
+                        </div><!-- .item end -->
+
+                    </div><!-- .list end -->
+
+                </section><!-- .cont02 end -->
+
+                <section class="cont03">
+
+                    <h1>BRAND SPECIAL EXHIBITION</h1>
+
+                    <div class="box">
+
+                        <div class="left">
+
+                            <h2>qss'</h2>
+
+                            <div class="list">
+
+                                <div class="item">
+                                    <figure>
+                                        <img src="img/컨텐츠3-1상의.jpg" class="front" alt="front">
+                                    </figure>
+                                    <span>qss'</span>
+                                    <h3>Hu Plane Cotton Shirt(5color)</h3>
+                                    <hr>
+                                    <p class="price">32,000원</p>
+                                </div><!-- .item end -->
+
+                                <div class="item">
+                                    <figure>
+                                        <img src="img/컨텐츠3-1바지.jpg" class="front" alt="front">
+                                    </figure>
+                                    <span>qss'</span>
+                                    <h3>Hu Plane Cotton pants(5color)</h3>
+                                    <hr>
+                                    <p class="price">34,000원</p>
+                                </div><!-- .item end -->
+
+                                <div class="item">
+                                    <figure>
+                                        <img src="img/컨텐츠3-1악세.jpg" class="front" alt="front">
+                                    </figure>
+                                    <span>qss'</span>
+                                    <h3>Ba Leather Key Ring(2color)</h3>
+                                    <hr>
+                                    <p class="price">27,000원</p>
+                                </div><!-- .item end -->
+
+                            </div><!-- .list end -->
+
+                        </div><!-- .left end -->
+
+                        <div class="right">
+                            <div class="bg_color"></div>
+                            <img src="img/컨텐츠3-1.jpg" alt="big_img">
+                        </div><!-- .right end -->
+
+                    </div><!-- .box end -->
+
+                    <div class="box">
+
+                        <div class="left">
+
+                            <h2>나름</h2>
+
+                            <div class="list">
+
+                                <div class="item">
+                                    <figure>
+                                        <img src="img/컨텐츠3-2상의.jpg" class="front" alt="front">
+                                    </figure>
+                                    <span>나름</span>
+                                    <h3>케이 시스루 크롭 롱 슬리브</h3>
+                                    <hr>
+                                    <p class="price">27,550원</p>
+                                </div><!-- .item end -->
+
+                                <div class="item">
+                                    <figure>
+                                        <img src="img/컨텐츠3-2하의.jpg" class="front" alt="front">
+                                    </figure>
+                                    <span>나름</span>
+                                    <h3>틴청 버뮤다 데님 팬츠</h3>
+                                    <hr>
+                                    <p class="price">39,500원</p>
+                                </div><!-- .item end -->
+
+                                <div class="item">
+                                    <figure>
+                                        <img src="img/컨텐츠3-2가방.jpg" class="front" alt="front">
+                                    </figure>
+                                    <span>나름</span>
+                                    <h3>로프 네트 니트백</h3>
+                                    <hr>
+                                    <p class="price">47,000원</p>
+                                </div><!-- .item end -->
+
+                            </div><!-- .list end -->
+
+                        </div><!-- .left end -->
+
+                        <div class="right">
+                            <div class="bg_color"></div>
+                            <img src="img/컨텐츠3-2.jpg" alt="big_img">
+                        </div><!-- .right end -->
+
+                    </div><!-- .box end -->
+
+                </section><!-- .cont03 end -->
+
+                <section class="cont04">
+
+                    <h1>FEATURED BRAND</h1>
+
+                    <div class="swiper cont04_list">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/디올배너.jpg" alt="디올배너">
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/구찌배너.jpg" alt="구찌배너">
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/에잇세컨즈배너.jpg" alt="디올배너">
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                        </div><!-- .swiper-wrapper end -->
+
+                        <div class="swiper-scrollbar"></div>
+
+                        <div class="cont04_list_notice">
+                            <p>
+                                화면을 좌우로 슬라이드 하여 여러 브랜드를 만나보세요!
+                                <br>
+                                클릭시 본 화면은 사라집니다.
+                            </p>
+                        </div><!-- .cont04_list_notice end -->
+
+                    </div><!-- .cont04_list end -->
+
+                </section><!-- .cont04 end -->
+
+                <section class="cont05">
+                    <br><br>
+                    <h4>REVIEW</h4>
+                    <br>
+                    <div id="carouselTicker-width-resize" class="carouselTicker">
+                        <ul class="carouselTicker__list">
+                            <li class="carouselTicker__item">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/후기1.jpeg" alt="1">
+                                    </figure>
+                                    <div class="re_title">
+                                        <h4>[남친룩의 정석] 화이트...</h4>
+                                        <p>★★★★★</p>
+                                    </div><!-- .re_title end -->
+                                    <span>노사무엘 님</span>
+                                    <p>요즘 프리사이즈 옷 사면 맨날 작았는데 이건 확실한 오버핏이라 좋았아요</p>
+                                </a>
+                            </li>
+                            <li class="carouselTicker__item">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/후기2.jpeg" alt="1">
+                                    </figure>
+                                    <div class="re_title">
+                                        <h4>2 Color 오버핏 옥스포드...</h4>
+                                        <p>★★★★☆</p>
+                                    </div><!-- .re_title end -->
+                                    <span>백상운 님</span>
+                                    <p>색감 정말 잘 빠졌고 의외로 많이 얇아서 더운 여름에도 입기 괜찮습니다</p>
+                                </a>
+                            </li>
+                            <li class="carouselTicker__item">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/후기3.jpeg" alt="1">
+                                    </figure>
+                                    <div class="re_title">
+                                        <h4>[시즌상품] GRID 레인부...</h4>
+                                        <p>★★☆☆☆</p>
+                                    </div><!-- .re_title end -->
+                                    <span>김영찬 님</span>
+                                    <p>레인부츠인데 입구가 너무 넓어서 비가 다 들어와서 벗기가 힘들어요 ㅠㅠ</p>
+                                </a>
+                            </li>
+                            <li class="carouselTicker__item">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/후기4.jpg" alt="1">
+                                    </figure>
+                                    <div class="re_title">
+                                        <h4>[당일출고] 2Type Slip...</h4>
+                                        <p>★★★★★</p>
+                                    </div><!-- .re_title end -->
+                                    <span>류재환 님</span>
+                                    <p>슬리퍼들이 그렇듯이 혹시나 망가질까 걱정많이
+                                        했었는데 다행히 색 변화도 없고 정말 잘 신었습니다</p>
+                                </a>
+                            </li>
+                            <li class="carouselTicker__item">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/후기5.jpg" alt="1">
+                                    </figure>
+                                    <div class="re_title">
+                                        <h4>2 Color 오버핏 옥스포드...</h4>
+                                        <p>★★★★★</p>
+                                    </div><!-- .re_title end -->
+                                    <span>유성민 님</span>
+                                    <p>어깨 넓어보여서 좋습니다 굿ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</p>
+                                </a>
+                            </li>
+                            <li class="carouselTicker__item">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/후기6.jpg" alt="1">
+                                    </figure>
+                                    <div class="re_title">
+                                        <h4>[1+1] 커플 트레이닝 바...</h4>
+                                        <p>★★★★★</p>
+                                    </div><!-- .re_title end -->
+                                    <span>김윤호 님</span>
+                                    <p>기념일 맞아서 여자친구한테 선물 해줬는데 너무 마음에 들어하네요 ㅎㅎ</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </section>
+
+
+
+
+
+                <!--  
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/QW6zEzZVB54?autoplay=1&mute=1&loop=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/3qD4ojYCFEE?autoplay=1&mute=1&loop=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YM2sYLSMeQo?autoplay=1&mute=1&loop=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/av5_7UjX2hk?autoplay=1&mute=1&loop=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/kU3Y2lZtrP4?autoplay=1&mute=1&loop=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe> -->
+                <div class="go_top">
+                    ▲ Top
+                </div><!-- .go_top end -->
+
+            </div>
+
+        </main>
+
+        <footer>
+
+            <div class="sns">
+                <a href="#"><img src="img/인스타.png" alt="1"></a>
+                <a href="#"><img src="img/페북.png" alt="2"></a>
+                <a href="#"><img src="img/네이버.png" alt="3"></a>
+            </div><!-- .sns end -->
+
+            <p>(주) 하이버</p>
+
+            <p>(주)하이버가 제공하는 서비스는 통신판매중개자로서 통신판매 당사자가<br>
+                아니며, 판매자가 등록한 상품정보 및 거래에 하이버는 책임지지 않습니다.<br>
+                또한 하이버에서 판매되는 모든 브랜드 제품은 정식제조, 정식수입원을<br>
+                통해 유통되는 100% 정품입니다.</p>
+
+            <span>호스팅사업자 ㈜브랜디ㅣ 고객센터 : 1670-6576</span>
+
+            <div class="license">
+                <a class="left" href="#">이용약관</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">사업자정보확인</a>
+            </div><!-- .license end -->
+
+            <div class="footer_menu">
+                <a href="#">입점문의</a>
+                <a href="#">셀러어드민</a>
+            </div>
+
+        </footer>
+
+
+
+
+
+    </div><!-- .wrap end -->
+    <script type="text/javascript" src="lib/jquery.carouselTicker.js"></script>
+    <script type="text/javascript" src="lib/start.js"></script>
+
+</body>
+
+</html>
