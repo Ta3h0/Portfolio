@@ -190,7 +190,7 @@ header nav .menu_close {
 }
 
 header nav .gnb .depth01 {
-    width: 50%;
+    width: 90%;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -654,5 +654,48 @@ footer {
 @media screen and (max-width:787px) {
     .cont02 .in_txt {
         font-size: 40px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    header nav .gnb .depth01>a {
+        font-size: 30px;
+    }
+
+    header nav .depth01 .depth02 li {
+        line-height: 1;
+        margin: 10px 0;
+    }
+
+    header nav .depth01 .depth02 {
+        width: 90%;
+        margin: 10px auto 0;
+    }
+}
+
+@media screen and (max-width:500px) {
+
+    .main_visual .main_txt h1 {
+        font-size: 40px;
+    }
+
+    .main_visual .main_txt div strong {
+        font-size: 40px;
+    }
+
+    .main_visual .main_txt div p {
+        font-size: 18px;
+    }
+
+    .cont01 .inner h1 {
+        font-size: 50px;
+    }
+
+    .cont04 h1 {
+        font-size: 50px;
+    }
+
+    .cont04 p {
+        font-size: 22px;
     }
 }
