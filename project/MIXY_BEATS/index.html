@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wix - Best Beats</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/wix.css">
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="lib/jquery-3.7.0.min.js"></script>
+
+    <script>
+
+        $(function () {
+
+
+            AOS.init();
+            let menuOpen = $('.menu_open')
+            let menuClose = $('.menu_close')
+
+            menuOpen.click(function () {
+                $('nav').css({
+                    'right': '0'
+                })
+            })
+
+            menuClose.click(function () {
+                $('nav').css({
+                    'right': '-100%'
+                })
+            })
+
+            let depth01 = $('.depth01 a')
+            let depth02 = $('.depth02')
+
+            depth01.click(function () {
+                if ($(this).next().css('display') == 'none') {
+                    depth02.slideUp();
+                    $(this).next().slideDown();
+                    depth01.css({
+                        'color': '#fff'
+                    });
+                    $(this).css({
+                        'color': 'tomato'
+                    })
+                } else {
+                    $(this).next().slideUp();
+                }
+            })
+
+            var audio1 = document.getElementById("#myAudio");
+
+            let listSelect = $('.cont03 .list li')
+            let listSelectBtn = $('.cont03 .list li button')
+
+
+
+            var audio1 = document.getElementById("myAudio");
+
+            // 음악 재생 시간이 바뀌면 호출되는 이벤트
+            audio1.addEventListener('timeupdate', function (e) {
+                console.log(total)
+                // 현재 재생 시간 (초 단위 절삭)
+                var playtime = Math.floor(audio1.currentTime);
+                // 전체 재생 시간 (초 단위 절삭)
+                var total = Math.floor(audio1.duration);
+
+
+                if (listSelect.hasClass('on')) {
+                    $('progress').attr('max', total)
+                    $('progress').attr('value', playtime)
+                } else {
+                    $('progress').attr('max', total)
+                    $('progress').attr('value', '0')
+                }
+
+            }, false);
+
+            //재생버튼 눌렀을때
+            listSelectBtn.click(function () {
+                //모든 버튼 모양 바꿔주기
+                listSelectBtn.text('▷')
+                //모든 li에 on제거
+                listSelect.removeClass('on')
+                //순서에 맞는 li에 on 만들기
+                $(listSelect).eq($(this).index('.cont03 button')).addClass('on')
+                $(this).toggleClass('on')
+
+                if ($(this).hasClass('on')) {
+                    $(this).text('||')
+                    audio1.play();
+                } else {
+                    //순서에 맞는 li에 on 지우기
+                    listSelect.eq($(this).index('.cont03 button')).removeClass('on')
+                    audio1.pause();
+
+                }
+
+            })
+
+        }); // jQuery end
+
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header>
+            <div class="inner">
+                <h1><a href="#">MIXY BEATS</a></h1>
+
+                <div class="search">
+                    <input type="text" placeholder="원하는 type의 비트를 검색해보세요!">
+                    <button>🔍</button>
+                </div><!-- .search end -->
+
+                <div class="pc">
+                    <div class="login">
+                        로그인 / 회원가입
+                    </div>
+
+                    <div class="menu_open">메뉴보기</div>
+                </div><!-- .pc end -->
+                <nav>
+                    <div class="menu_close">
+                        <p>메뉴닫기</p>
+                    </div><!-- .menu_close end -->
+                    <ul class="gnb">
+                        <li class="depth01">
+                            <a href="#">Type-Beat</a>
+                            <ul class="depth02">
+                                <li><a href="#">Trap</a></li>
+                                <li><a href="#">Boombap</a></li>
+                                <li><a href="#">Drill</a></li>
+                                <li><a href="#">R&B</a></li>
+                            </ul><!-- .depth02 end -->
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Producer</a>
+                            <ul class="depth02">
+                                <li><a href="#">MIXY 프로듀서</a></li>
+                                <li><a href="#">개인 프로듀서</a></li>
+                                <li><a href="#">프로듀서 포트폴리오</a></li>
+                            </ul><!-- .depth02 end -->
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Theme</a>
+                            <ul class="depth02">
+                                <li><a href="#">격렬</a></li>
+                                <li><a href="#">긴장</a></li>
+                                <li><a href="#">신나는</a></li>
+                                <li><a href="#">섹시</a></li>
+                            </ul><!-- .depth02 end -->
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Top100</a>
+                        </li><!-- .depth01 end -->
+
+                    </ul><!-- .gnb end -->
+                </nav>
+            </div><!-- .inner end -->
+        </header>
+
+        <main>
+            <section class="main_visual">
+                <div class="main_txt">
+                    <h1>당신을 위한</h1>
+                    <h1>비트</h1>
+                    <div>
+                        <strong>+</strong>
+                        <p>원하는 비트를 고르고 구매해보세요</p>
+                    </div>
+                    <div>
+                        <strong>+</strong>
+                        <p>내가 만든 비트를 홍보하고 아티스트와 컨택해보세요</p>
+                    </div>
+                </div>
+            </section><!-- .main_visual -->
+
+            <section class="cont01">
+                <div class="inner">
+                    <div>
+                        <h1>MIXY BEATS란?</h1>
+                        <h1>비트를 공유하는</h1>
+                        <h1>국내 최대의</h1>
+                        <h1>Music Community</h1>
+                    </div>
+                    <div class="bottom">
+                        <figure>
+                            <video class="num1" autoplay muted loop>
+                                <source src="IMG/beat.mp4" type="video/mp4" />
+                            </video>
+                        </figure>
+                        <div class="bottom_right">
+                            <p>어떤 음악이든 시작을 위해선 비트가 필요합니다. 처음 입문자들에게 질문했을 때 처음 입문때 가장 어려움을 겪는 것이 바로 반주 만들기라고 하는데요.
+                                타입비트부터 더블, 스윙, 쿼터등등 처음 들어봤을 법한 단어들부터 시작해서 장르마다 다양한 강세등 복잡한 용어들이 많아 어려움을 겪습니다.
+                            </p>
+                            <p>
+                                MIXY BEATS는 세세한 메뉴인 테마, 장르, 유사한 비트 등등으로 전문적인 용어를 알지 못하더라도 음악을 창작하기에 어려움이 없도록 만들어진
+                                국내 최대 크기의 비트 커뮤니티 입니다.</p>
+                            <p>
+                                여러 전문 프로듀서들과 MIXY BEATS의 인증을 받은 개인 프로듀서들까지 여러분이 원하는 비트와 프로듀서를 직접 선택해서 컨택해보세요</p>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- .cont01 end -->
+
+            <section class="cont02">
+                <img src="img/DJ.jpg" alt="1">
+                <div class="in_txt" data-aos="fade-up" data-aos-duration="3000">
+                    <p>이런 비트들은 어때요?</p>
+                </div>
+    </div>
+    </section><!-- .cont02 end -->
+
+    <section class="cont03">
+        <div class="top">
+            <h1>Tredy Beats</h1>
+            <p>MIXY BEATS CHART의 상위권 비트들 입니다</p>
+        </div>
+
+        <div class="bottom">
+            <figure class="video_box">
+                <video autoplay muted loop>
+                    <source src="IMG/beat.mp4" type="video/mp4" />
+                </video>
+            </figure><!-- .video_box end -->
+            <div class="song_list">
+                <ul class="list">
+                    <li>
+                        <audio src="audio/1.mp3" id="myAudio"></audio>
+                        <progress value="0" min="0" max="100"></progress>
+                        <div class="left">
+                            <button>▷</button>
+                            <p>제목</p>
+                        </div>
+                        <div class="un_select">
+                            <p>03:17</p>
+                        </div>
+                        <div class="select">
+                            <a href="#">공유</a>
+                            <a href="#">정보</a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <audio src="audio/1.mp3" id="myAudio2"></audio>
+                        <progress value="0" min="0" max="100"></progress>
+                        <div class="left">
+                            <button>▷</button>
+                            <p>제목</p>
+                        </div>
+                        <div class="un_select">
+                            <p>03:17</p>
+                        </div>
+                        <div class="select">
+                            <a href="#">공유</a>
+                            <a href="#">정보</a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <audio src="audio/1.mp3" id="myAudio3"></audio>
+                        <progress value="0" min="0" max="100"></progress>
+                        <div class="left">
+                            <button>▷</button>
+                            <p>제목</p>
+                        </div>
+                        <div class="un_select">
+                            <p>03:17</p>
+                        </div>
+                        <div class="select">
+                            <a href="#">공유</a>
+                            <a href="#">정보</a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <audio src="audio/1.mp3" id="myAudio4"></audio>
+                        <progress value="0" min="0" max="100"></progress>
+                        <div class="left">
+                            <button>▷</button>
+                            <p>제목</p>
+                        </div>
+                        <div class="un_select">
+                            <p>03:17</p>
+                        </div>
+                        <div class="select">
+                            <a href="#">공유</a>
+                            <a href="#">정보</a>
+                        </div>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cont04">
+        <div class="inner">
+            <h1>아티스트로 등록하고 싶으신가요?</h1>
+            <p>MIXY BEATS에 등록할 정보들을 아래에 입력해서 보내주세요</p>
+            <p>심사 후 결과를 알려드립니다</p>
+
+            <div class="top">
+                <div class="top_left">
+                    <p>본명*</p>
+                    <input type="text">
+                </div>
+                <div class="top_right">
+                    <p>아티스트 명</p>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="center">
+                <div class="center_left">
+                    <p>이메일*</p>
+                    <input type="text">
+                </div>
+                <div class="center_right">
+                    <p>곡 제목</p>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="bottom">
+                <p>작업물*</p>
+                <div class="input">
+                    <p>작업물을 여기로 드래그 해주세요</p>
+                </div>
+            </div>
+
+            <button class="submit">Submit</button>
+        </div>
+    </section>
+
+    <div class="right_tab">
+        <a href="https://twitter.com/?lang=ko" target="_blank"><img src="img/트위터.png" alt="1"></a>
+        <a href="https://soundcloud.com/beat-ft" target="_blank"><img src="img/사클.png" alt="2"></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="img/인스타.png" alt="3"></a>
+        <a href="https://www.youtube.com/" target="_blank"><img src="img/유튜브.png" alt="4"></a>
+    </div>
+
+    </main>
+
+    <footer>
+        copyright(c) 2002 All rights reserved
+    </footer>
+    </div>
+</body>
+
+</html>
