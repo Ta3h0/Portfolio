@@ -16,6 +16,8 @@
 
         window.onload = () => {
 
+
+
             var swiper = new Swiper(".mySwiper", {
                 slidesPerView: 1,
                 spaceBetween: 30,
@@ -29,6 +31,8 @@
                     prevEl: ".swiper-button-prev",
                 },
             });
+
+
 
 
         }; //JS end
@@ -109,7 +113,7 @@
                         }
                     }
 
-                 
+
 
                     //페이지 번호에 맞춰서 헤더 메뉴 li 색상 변경
                     if (c == 0) {
@@ -194,7 +198,7 @@
             $('.design figure img').click(function () {
 
                 $('.design figure').removeClass('on')
-                $(this).parent().addClass('on')
+                $(this).parent().addClass('on');
 
             }); //$('.design figure').click end
 
@@ -208,40 +212,47 @@
             }); //$('.design figure span').click end
 
             //마치며 left에 마우스 올리면 left가 부각되게
-            $('.end .left').mouseenter(function (){
+            $('.end .left').mouseenter(function () {
                 $('.end .left').stop().css({
-                    'width' : '70%',
-                    'background-color' : '#ff662e'
+                    'width': '70%',
+                    'background-color': '#ff662e'
                 })
-    
+
                 $('.end .right').stop().css({
-                    'width' : '30%',
-                    'background-color' : '#ffb093'
-                })
-            })
-    
-            //마치며 right에 마우스 올리면 right가 부각되게
-            $('.end .right').mouseenter(function (){
-                $('.end .right').stop().css({
-                    'width' : '70%',
-                    'background-color' : '#ff662e'
-                })
-    
-                $('.end .left').stop().css({
-                    'width' : '30%',
-                    'background-color' : '#ffb093'
+                    'width': '30%',
+                    'background-color': '#ffb093'
                 })
             })
 
-            $('.end .contact').click(function (){
-                if($('.end .contact .inner').css('display') == 'none') {
+            //마치며 right에 마우스 올리면 right가 부각되게
+            $('.end .right').mouseenter(function () {
+                $('.end .right').stop().css({
+                    'width': '70%',
+                    'background-color': '#ff662e'
+                })
+
+                $('.end .left').stop().css({
+                    'width': '30%',
+                    'background-color': '#ffb093'
+                })
+            })
+
+            $('.end .contact').click(function () {
+                if ($('.end .contact .inner').css('display') == 'none') {
                     $('.end .contact .inner').slideDown();
                     $('.end .contact .inner').css({
-                        'display' : 'flex'
+                        'display': 'flex'
                     });
                 } else {
                     $('.end .contact .inner').slideUp();
                 }
+            })
+
+            $('.modal .right span').click(function () {
+                $('body').removeClass('back')
+                $('.modal').css({
+                    'display': 'none'
+                })
             })
         }); //jQuery end
 
@@ -249,8 +260,20 @@
     </script>
 </head>
 
-<body>
+<body class="back">
     <div id="wrap">
+
+        <div class="modal">
+            <div class="left"></div><!-- .left end -->
+
+            <div class="right">
+                <h3>해당 페이지는</h3>
+                <p>개인용 포트폴리오 입니다</p>
+                <p>해상도는 1920 X 1080에 최적화 되어있습니다</p>
+                <p>또한 상업적 목적은 전혀 없음을 알려드립니다</p>
+                <span>시작하기</span>
+            </div><!-- .right end -->
+        </div><!-- .modal end -->
 
         <header>
             <ul class="menu">
@@ -345,16 +368,16 @@
                                 </p>
                             </div>
 
-                            
-                        <div>
-                            <h3 class="title">Motto</h3>
-                            <p>웹 퍼블리싱이란<br>
-                                꾸준함과 새로운 영감이<br>
-                                필수라고 생각합니다<br>
-                                저는 꾸준함과 영감이 무기인<br>
-                                <strong>웹 퍼블리셔</strong>입니다
-                            </p>
-                        </div>
+
+                            <div>
+                                <h3 class="title">Motto</h3>
+                                <p>웹 퍼블리싱이란<br>
+                                    꾸준함과 새로운 영감이<br>
+                                    필수라고 생각합니다<br>
+                                    저는 꾸준함과 영감이 무기인<br>
+                                    <strong>웹 퍼블리셔</strong>입니다
+                                </p>
+                            </div>
                         </div><!-- .right_bottom end -->
                     </div><!-- .right end -->
                 </div><!-- .inner end -->
@@ -369,7 +392,10 @@
                             <div class="inner_bg">
                                 <div class="inner">
                                     <figure class="left">
-                                        <img src="img/project1.png" alt="리뉴얼 프로젝트 1번 유쏘풀">
+                                        <img src="img/YOUSSOFUL.png" alt="리뉴얼 프로젝트 1번 유쏘풀">
+                                        <div class="pannel">
+                                            <img src="img/big_YOUSSOFUL.png" alt="유쏘풀 전체 이미지">
+                                        </div><!-- .pannel end -->
                                     </figure><!-- .left end -->
                                     <div class="right">
                                         <h4>사이트 명 : 유쏘풀</h4>
@@ -381,7 +407,7 @@
 
                                         <div class="btn">
                                             <a href="#">프로세스 페이지</a>
-                                            <a href="project/youssoful/index.html">완성작 보기</a>
+                                            <a href="https://ta3h0.github.io/youssoful/">완성작 보기</a>
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
@@ -394,12 +420,15 @@
                             <div class="inner_bg">
                                 <div class="inner">
                                     <figure class="left">
-                                        <img src="img/project2.png" alt="창작 프로젝트 4번 하이버">
+                                        <img src="img/HIVER.png" alt="창작 프로젝트 2번 하이버">
+                                        <div class="pannel">
+                                            <img src="img/big_HIVER.png" alt="하이버 전체 이미지">
+                                        </div><!-- .pannel end -->
                                     </figure><!-- .left end -->
                                     <div class="right">
                                         <h4>사이트 명 : 하이버</h4>
 
-                                        <p>작업 기간 : 10일</p>
+                                        <p>작업 기간 : 5일</p>
                                         <p>작업 내용 : 모바일 사이트 PC화(+ 컨텐츠)</p>
                                         <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
@@ -414,19 +443,50 @@
 
                         </div><!-- .swiper-slide end -->
 
+                        <div class="swiper-slide">
+                            <h3>CREATE PROJECT</h3>
+                            <div class="inner_bg">
+                                <div class="inner">
+                                    <figure class="left">
+                                        <img src="img/아파트멘터리.png" alt="창작 프로젝트 3번 아파트멘터리">
+                                        <div class="pannel">
+                                            <img src="img/기획.png" alt="아파트멘터리 전체 이미지">
+                                        </div><!-- .pannel end -->
+                                    </figure><!-- .left end -->
+                                    <div class="right">
+                                        <h4>사이트 명 : 아파트멘터리</h4>
+
+                                        <p>작업 기간 : 10시간</p>
+                                        <p>작업 내용 : 리뉴얼(리뉴얼)</p>
+                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
+                                        <p>사용 툴 : VSCode, PhotoShop</p>
+
+                                        <div class="btn">
+                                            <a href="#">프로세스 페이지</a>
+                                            <a href="project/apartmentary/index.html">완성작 보기</a>
+                                        </div><!-- .btn end -->
+                                    </div><!-- .right end -->
+                                </div><!-- .inner end -->
+                            </div><!-- .inner_bg end -->
+
+                        </div><!-- .swiper-slide end -->
+
 
                         <div class="swiper-slide">
                             <h3>CREATE PROJECT</h3>
                             <div class="inner_bg">
                                 <div class="inner">
                                     <figure class="left">
-                                        <img src="img/project2.png" alt="리뉴얼 프로젝트 2번 멜론">
+                                        <img src="img/MIXY_BEATS_PC.png" alt="창작 프로젝트 4번 MIXY_BEATS">
+                                        <div class="pannel">
+                                            <img src="img/big_MIXY_BEATS.png" alt="믹시 비츠 풀화면">
+                                        </div><!-- .pannel end -->
                                     </figure><!-- .left end -->
                                     <div class="right">
                                         <h4>사이트 명 : MIXY BEATS</h4>
 
-                                        <p>작업 기간 : 15일</p>
-                                        <p>작업 내용 : 창작(브랜드, 디자인, 컨텐츠)</p>
+                                        <p>작업 기간 : 2일</p>
+                                        <p>작업 내용 : 창작(브랜드, 디자인, 컨텐츠 , 반응형)</p>
                                         <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
 
@@ -446,12 +506,12 @@
                             <div class="inner_bg">
                                 <div class="inner">
                                     <figure class="left">
-                                        <img src="img/project3.png" alt="리뉴얼 프로젝트 3번 먼스커피바">
+                                        <img src="img/project3.png" alt="리뉴얼 프로젝트 5번 먼스커피바">
                                     </figure><!-- .left end -->
                                     <div class="right">
                                         <h4>사이트 명 : 먼스커피바</h4>
 
-                                        <p>작업 기간 : 13일</p>
+                                        <p>작업 기간 : 10일</p>
                                         <p>작업 내용 : 리뉴얼(디자인)</p>
                                         <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
@@ -464,32 +524,6 @@
                                 </div><!-- .inner end -->
 
                             </div><!-- .inner_bg end -->
-                        </div><!-- .swiper-slide end -->
-
-
-                        <div class="swiper-slide">
-                            <h3>CREATE PROJECT</h3>
-                            <div class="inner_bg">
-                                <div class="inner">
-                                    <figure class="left">
-                                        <img src="img/project2.png" alt="창작 프로젝트 4번 하이버">
-                                    </figure><!-- .left end -->
-                                    <div class="right">
-                                        <h4>사이트 명 : 하이버</h4>
-
-                                        <p>작업 기간 : 10일</p>
-                                        <p>작업 내용 : 모바일 사이트 PC화(+ 컨텐츠)</p>
-                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
-                                        <p>사용 툴 : VSCode, PhotoShop</p>
-
-                                        <div class="btn">
-                                            <a href="#">프로세스 페이지</a>
-                                            <a href="#">완성작 보기</a>
-                                        </div><!-- .btn end -->
-                                    </div><!-- .right end -->
-                                </div><!-- .inner end -->
-                            </div><!-- .inner_bg end -->
-
                         </div><!-- .swiper-slide end -->
 
                     </div>
@@ -557,25 +591,25 @@
                 <h3 class="title">CONTACT_</h3>
                 <div class="left">
                     <div>
-                    <strong>마음에 드셨나요?</strong>
-                    <p>마음에 드셨다면 언제 어디서든</p>
-                    <p>다시 만날 수 있길 바라겠습니다</p>
-                    <p>제 작업물이 마음에 들었거나</p>
-                    <p>제게 궁금한 점이 있으시다면</p>
-                    <p>아래에 연락처를 눌러 연락 주세요</p>
-                    <p>어떤 내용이라도 환영입니다 :)</p>
-                </div>
+                        <strong>마음에 드셨나요?</strong>
+                        <p>마음에 드셨다면 언제 어디서든</p>
+                        <p>다시 만날 수 있길 바라겠습니다</p>
+                        <p>제 작업물이 마음에 들었거나</p>
+                        <p>제게 궁금한 점이 있으시다면</p>
+                        <p>아래에 연락처를 눌러 연락 주세요</p>
+                        <p>어떤 내용이라도 환영입니다 :)</p>
+                    </div>
                 </div><!-- .left end -->
                 <div class="right">
                     <div>
-                    <strong>감사합니다!</strong>
-                    <p>머물러 있는 사람이 아닌</p>
-                    <p>쉬지 않고 흘러가며</p>
-                    <p>항상 사용자의 입장에서 생각하고</p>
-                    <p>어제보다 내일이 기대되는</p>
-                    <p>성장형 웹 퍼블리셔가</p>
-                    <p>될 것을 약속 드리겠습니다</p>
-                </div>
+                        <strong>감사합니다!</strong>
+                        <p>머물러 있는 사람이 아닌</p>
+                        <p>쉬지 않고 흘러가며</p>
+                        <p>항상 사용자의 입장에서 생각하고</p>
+                        <p>어제보다 내일이 기대되는</p>
+                        <p>성장형 웹 퍼블리셔가</p>
+                        <p>될 것을 약속 드리겠습니다</p>
+                    </div>
                 </div><!-- .right end -->
 
                 <div class="line">
@@ -593,29 +627,27 @@
                             <img src="img/call.png" alt="call">
                             <p>010 - 4003 - 8074</p>
                         </div><!-- .item end -->
-                        
+
                         <div class="item">
                             <img src="img/mail.png" alt="mail">
                             <p>Ta3h0_@naver.com</p>
                         </div><!-- .item end -->
-                        
+
                         <div class="item">
                             <img src="img/kakaotalk.png" alt="kakaotalk">
                             <p>Crong0612</p>
                         </div><!-- .item end -->
-                        
+
                         <div class="item">
                             <img src="img/instagram.png" alt="Instagram">
                             <p>@Ta3h0_</p>
                         </div><!-- .item end -->
-                        
+
                     </div><!-- .inner -->
                 </div><!-- .contact end -->
             </section><!-- .end end -->
 
         </main>
-
-
     </div><!-- #wrap end -->
 </body>
 
