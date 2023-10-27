@@ -63,6 +63,7 @@
                     function slide() {
 
                         $('body').addClass('on')
+                        mainPage.css({'min-height' : '0'})
                         mainPage.slideUp(800)
                         mainPage.eq(c).slideDown(700)
                         mainPage.eq(c).css({ 'display': 'flex' });
@@ -70,6 +71,7 @@
                         pagingCount.eq(c).addClass('on')
                         setTimeout(function () {
                             $('body').removeClass('on');
+                            mainPage.css({'min-height' : '1080px'})
                         }, 800)
 
                     }
@@ -152,6 +154,7 @@
 
                     //클릭 풀페이징 애니메이션
                     $('body').addClass('on');
+                    mainPage.css({'min-height' : '0'})
                     mainPage.stop().slideUp(800);
                     mainPage.eq($(this).index()).stop().slideDown(700);
                     mainPage.eq($(this).index()).css({ 'display': 'flex' })
@@ -161,6 +164,7 @@
 
                     setTimeout(function () {
                         $('body').removeClass('on');
+                        mainPage.css({'min-height' : '1080px'})
                     }, 800)
 
                     //휠 풀페이징과 카운트 연동하기
@@ -337,7 +341,7 @@
                                 <p>Ta3h0_@naver.com</p>
 
                                 <h4>GitHub</h4>
-                                <a href="https://github.com/Ta3h0_">https://github.com/Ta3h0_</a>
+                                <a href="https://github.com/Ta3h0_" target="_blank">https://github.com/Ta3h0_</a>
                             </div>
 
                             <div>
@@ -388,11 +392,39 @@
                     <div class="swiper-wrapper">
 
                         <div class="swiper-slide">
+                            <h3>CREATE PROJECT</h3>
+                            <div class="inner_bg">
+                                <div class="inner">
+                                    <figure class="left">
+                                        <img src="img/아파트멘터리.png" alt="1번 창작 프로젝트 아파트멘터리">
+                                        <div class="pannel">
+                                            <img src="img/기획.png" alt="아파트멘터리 전체 이미지">
+                                        </div><!-- .pannel end -->
+                                    </figure><!-- .left end -->
+                                    <div class="right">
+                                        <h4>사이트 명 : 아파트멘터리</h4>
+
+                                        <p>작업 기간 : 3일</p>
+                                        <p>작업 내용 : 리뉴얼(디자인, 퍼블리싱)</p>
+                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
+                                        <p>사용 툴 : VSCode, PhotoShop</p>
+
+                                        <div class="btn">
+                                            <a href="#">프로세스 페이지</a>
+                                            <a href="https://ta3h0.github.io/apartmentary/" target="_blank">완성작 보기</a>
+                                        </div><!-- .btn end -->
+                                    </div><!-- .right end -->
+                                </div><!-- .inner end -->
+                            </div><!-- .inner_bg end -->
+
+                        </div><!-- .swiper-slide end -->
+
+                        <div class="swiper-slide">
                             <h3>RENEWAL PROJECT</h3>
                             <div class="inner_bg">
                                 <div class="inner">
                                     <figure class="left">
-                                        <img src="img/YOUSSOFUL.png" alt="리뉴얼 프로젝트 1번 유쏘풀">
+                                        <img src="img/YOUSSOFUL.png" alt="2번 리뉴얼 프로젝트 유쏘풀">
                                         <div class="pannel">
                                             <img src="img/big_YOUSSOFUL.png" alt="유쏘풀 전체 이미지">
                                         </div><!-- .pannel end -->
@@ -401,13 +433,13 @@
                                         <h4>사이트 명 : 유쏘풀</h4>
 
                                         <p>작업 기간 : 7일</p>
-                                        <p>작업 내용 : 리뉴얼(디자인, 컨텐츠, 카드뉴스API)</p>
+                                        <p>작업 내용 : 리뉴얼(디자인, ,퍼블리싱, 카드뉴스API, 컨텐츠)</p>
                                         <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
 
                                         <div class="btn">
                                             <a href="#">프로세스 페이지</a>
-                                            <a href="https://ta3h0.github.io/youssoful/">완성작 보기</a>
+                                            <a href="https://youssoful-portfolio.netlify.app/" target="_blank">완성작 보기</a>
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
@@ -420,7 +452,7 @@
                             <div class="inner_bg">
                                 <div class="inner">
                                     <figure class="left">
-                                        <img src="img/HIVER.png" alt="창작 프로젝트 2번 하이버">
+                                        <img src="img/HIVER.png" alt="3번 창작 프로젝트 하이버">
                                         <div class="pannel">
                                             <img src="img/big_HIVER.png" alt="하이버 전체 이미지">
                                         </div><!-- .pannel end -->
@@ -429,13 +461,13 @@
                                         <h4>사이트 명 : 하이버</h4>
 
                                         <p>작업 기간 : 5일</p>
-                                        <p>작업 내용 : 모바일 사이트 PC화(+ 컨텐츠)</p>
+                                        <p>작업 내용 : 모바일 사이트 PC화(+ 디자인, 컨텐츠)</p>
                                         <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
 
                                         <div class="btn">
                                             <a href="#">프로세스 페이지</a>
-                                            <a href="project/hiver/index.html">완성작 보기</a>
+                                            <a href="https://ta3h0.github.io/Hiver/" target="_blank">완성작 보기</a>
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
@@ -448,36 +480,7 @@
                             <div class="inner_bg">
                                 <div class="inner">
                                     <figure class="left">
-                                        <img src="img/아파트멘터리.png" alt="창작 프로젝트 3번 아파트멘터리">
-                                        <div class="pannel">
-                                            <img src="img/기획.png" alt="아파트멘터리 전체 이미지">
-                                        </div><!-- .pannel end -->
-                                    </figure><!-- .left end -->
-                                    <div class="right">
-                                        <h4>사이트 명 : 아파트멘터리</h4>
-
-                                        <p>작업 기간 : 10시간</p>
-                                        <p>작업 내용 : 리뉴얼(리뉴얼)</p>
-                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
-                                        <p>사용 툴 : VSCode, PhotoShop</p>
-
-                                        <div class="btn">
-                                            <a href="#">프로세스 페이지</a>
-                                            <a href="project/apartmentary/index.html">완성작 보기</a>
-                                        </div><!-- .btn end -->
-                                    </div><!-- .right end -->
-                                </div><!-- .inner end -->
-                            </div><!-- .inner_bg end -->
-
-                        </div><!-- .swiper-slide end -->
-
-
-                        <div class="swiper-slide">
-                            <h3>CREATE PROJECT</h3>
-                            <div class="inner_bg">
-                                <div class="inner">
-                                    <figure class="left">
-                                        <img src="img/MIXY_BEATS_PC.png" alt="창작 프로젝트 4번 MIXY_BEATS">
+                                        <img src="img/MIXY_BEATS_PC.png" alt="4번 창작 프로젝트 MIXY_BEATS">
                                         <div class="pannel">
                                             <img src="img/big_MIXY_BEATS.png" alt="믹시 비츠 풀화면">
                                         </div><!-- .pannel end -->
@@ -486,13 +489,13 @@
                                         <h4>사이트 명 : MIXY BEATS</h4>
 
                                         <p>작업 기간 : 2일</p>
-                                        <p>작업 내용 : 창작(브랜드, 디자인, 컨텐츠 , 반응형)</p>
-                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
+                                        <p>작업 내용 : 창작(브랜드, 디자인, 컨텐츠, 반응형)</p>
+                                        <p>사용 언어 : HTML, Css, jQuery</p>
                                         <p>사용 툴 : VSCode, PhotoShop</p>
 
                                         <div class="btn">
                                             <a href="#">프로세스 페이지</a>
-                                            <a href="project/MIXY_BEATS/index.html">완성작 보기</a>
+                                            <a href="https://ta3h0.github.io/Mixy_beats/" target="_blank">완성작 보기</a>
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
@@ -500,25 +503,26 @@
                             </div><!-- .inner_bg end -->
                         </div><!-- .swiper-slide end -->
 
-
                         <div class="swiper-slide">
-                            <h3>RENEWAL PROJECT</h3>
+                            <h3>CREATE PROJECT</h3>
                             <div class="inner_bg">
                                 <div class="inner">
-                                    <figure class="left">
-                                        <img src="img/project3.png" alt="리뉴얼 프로젝트 5번 먼스커피바">
+                                    <figure class="left mobile">
+                                        <img src="img/관광모바일목업 (1).png" alt="5번 창작 프로젝트 부산 관광 모바일 웹">
+                                        <div class="pannel">
+                                            <img src="img/관광모바일전체.png" alt="부산 관광 모바일 웹 풀화면">
+                                        </div><!-- .pannel end -->
                                     </figure><!-- .left end -->
                                     <div class="right">
-                                        <h4>사이트 명 : 먼스커피바</h4>
+                                        <h4>사이트 명 : 부산 관광 모바일 웹</h4>
 
-                                        <p>작업 기간 : 10일</p>
-                                        <p>작업 내용 : 리뉴얼(디자인)</p>
-                                        <p>사용 언어 : HTML, Css, jQuery, Java Script</p>
-                                        <p>사용 툴 : VSCode, PhotoShop</p>
+                                        <p>작업 기간 : 2시간</p>
+                                        <p>작업 내용 : 리액트, 오픈API받아오기</p>
+                                        <p>사용 언어 : HTML, Css, REACT</p>
+                                        <p>사용 툴 : VSCode</p>
 
                                         <div class="btn">
-                                            <a href="#">프로세스 페이지</a>
-                                            <a href="#">완성작 보기</a>
+                                            <a href="https://shiny-gumption-da707c.netlify.app" target="_blank">완성작 보기</a>
                                         </div><!-- .btn end -->
                                     </div><!-- .right end -->
                                 </div><!-- .inner end -->
