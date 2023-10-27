@@ -278,6 +278,23 @@ body.back::before {
     margin: 10px 30px;
 }
 
+.info .right_top div:nth-of-type(2) img:nth-of-type(3) {
+    width: 68px;
+    height: 79px;
+    display: block;
+    margin: 10px 30px;
+}
+
+
+.info .right_top div:nth-of-type(2) img:nth-of-type(5),
+.info .right_top div:nth-of-type(2) img:nth-of-type(6),
+.info .right_top div:nth-of-type(2) img:nth-of-type(7) {
+    width: 67px;
+    height: 81px;
+    display: block;
+    margin: 10px 30px;
+}
+
 .info .right .right_bottom div:nth-of-type(2) .title {
     text-align: center;
 }
