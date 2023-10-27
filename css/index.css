@@ -376,7 +376,7 @@ body.back::before {
 }
 
 .site .inner_bg .inner .left:hover .pannel img {
-    animation: screening 10s infinite linear;
+    animation: screening 15s infinite linear;
 }
 
 .site .inner_bg .inner .left.mobile:hover .pannel img {
