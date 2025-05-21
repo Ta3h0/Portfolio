@@ -25,10 +25,8 @@
 
 body.back::before {
     content: '';
-    min-width: 1920px;
     width: 100%;
-    min-height: 1080px;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
@@ -82,13 +80,11 @@ body.back::before {
 }
 
 .main_visual {
-    min-width: 1920px;
     width: 100%;
-    min-height: 1080px;
-    height: 100vh;
+    height: 100%;
     background-color: #ff7f50;
     color: white;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     font-family: 'SBAggroB';
@@ -97,7 +93,7 @@ body.back::before {
 .main_visual .inner {
     background-color: #ff7f50;
     width: 100%;
-    height: 931px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -163,10 +159,8 @@ body.back::before {
 .site,
 .design,
 .end {
-    min-width: 1920px;
     width: 100%;
-    min-height: 1080px;
-    height: 100vh;
+    height: 100%;
     display: none;
 }
 
@@ -178,6 +172,7 @@ body.back::before {
 
 .info .inner {
     width: 1440px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -265,7 +260,7 @@ body.back::before {
 
 .info .right_top div:nth-of-type(2) div {
     width: 100%;
-    margin: 38px 0 0;
+    margin: 10px 0 0;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -273,7 +268,6 @@ body.back::before {
 
 .info .right_top div:nth-of-type(2) img {
     width: 67px;
-    height: 80px;
     display: block;
     margin: 10px 30px;
 }
